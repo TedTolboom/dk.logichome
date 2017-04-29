@@ -1,0 +1,1020 @@
+{
+  "id": "dk.logichome",
+  "name": {
+    "en": "Logic Home Control"
+  },
+  "version": "1.0.0",
+  "compatibility": "0.x || 1.x",
+  "description": {
+    "en": "Logic Home Control devices for Homey"
+  },
+  "category": [
+    "lights"
+  ],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Logic Home Control ApS",
+    "email": "info@logichome.dk"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Kim T. Nielsen",
+        "email": "ktn@logichome.dk"
+      }
+    ]
+  },
+  "capabilities": {
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "zhc5010_scene",
+        "title": {
+          "en": "Scene is activated"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=zhc5010"
+          },
+          {
+            "name": "button",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Top left"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Top right"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Bottom left"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Bottom right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "scene",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "Key Pressed 1 time",
+                "label": {
+                  "en": "Pressed 1x"
+                }
+              },
+              {
+                "id": "Key Pressed 2 times",
+                "label": {
+                  "en": "Pressed 2x"
+                }
+              },
+              {
+                "id": "Key Held Down",
+                "label": {
+                  "en": "Held down"
+                }
+              },
+              {
+                "id": "Key Released",
+                "label": {
+                  "en": "Press released"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "zhc5010_set_led_level",
+        "title": {
+          "en": "Set LED level"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=zhc5010"
+          },
+          {
+            "name": "led",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "BUTTON1_INDICATION",
+                "label": {
+                  "en": "Top left"
+                }
+              },
+              {
+                "id": "BUTTON2_INDICATION",
+                "label": {
+                  "en": "Top right"
+                }
+              },
+              {
+                "id": "BUTTON3_INDICATION",
+                "label": {
+                  "en": "Bottom left"
+                }
+              },
+              {
+                "id": "BUTTON4_INDICATION",
+                "label": {
+                  "en": "Bottom right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "level",
+            "type": "number",
+            "min": 0,
+            "max": 99,
+            "step": 1,
+            "placeholder": {
+              "en": "Light level"
+            }
+          }
+        ]
+      },
+      {
+        "id": "zhc5010_set_led_flash",
+        "title": {
+          "en": "Set LED flash"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=zhc5010"
+          },
+          {
+            "name": "led",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "BUTTON1_INDICATION",
+                "label": {
+                  "en": "Top left"
+                }
+              },
+              {
+                "id": "BUTTON2_INDICATION",
+                "label": {
+                  "en": "Top right"
+                }
+              },
+              {
+                "id": "BUTTON3_INDICATION",
+                "label": {
+                  "en": "Bottom left"
+                }
+              },
+              {
+                "id": "BUTTON4_INDICATION",
+                "label": {
+                  "en": "Bottom right"
+                }
+              }
+            ]
+          },
+          {
+            "name": "level",
+            "type": "number",
+            "min": 0,
+            "max": 99,
+            "step": 1,
+            "placeholder": {
+              "en": "Light level"
+            }
+          },
+          {
+            "name": "on_off_period",
+            "type": "number",
+            "min": 0,
+            "max": 25.5,
+            "step": 0.1,
+            "placeholder": {
+              "en": "On/Off period (0.1 - 25.5 seconds)"
+            }
+          },
+          {
+            "name": "on_off_cycles",
+            "type": "number",
+            "min": 0,
+            "max": 255,
+            "step": 1,
+            "placeholder": {
+              "en": "On/Off cycles (255 = forever)"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "zhc5010",
+      "capabilitiesOptions": {
+      },
+      "class": "light",
+      "capabilities": [ "onoff", "dim" ],
+      "images": {
+        "large": "/drivers/zhc5010/assets/images/large.png",
+        "small": "/drivers/zhc5010/assets/images/small.png"
+      },
+      "name": {
+        "en": "ZHC5010"
+      },
+      "zwave": {
+        "manufacturerId": 564,
+        "productTypeId": 3,
+        "productId": 266,
+        "learnmode": {
+          "image": "drivers/zhc5010/assets/icon.svg",
+          "instruction": {
+            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXCACTLY 3 times to activate inclusion mode in the device."
+          }
+        },
+        "unlearnmode": {
+          "image": "/drivers/zhc5010/assets/icon.svg",
+          "instruction": {
+            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXCACTLY 3 times to activate exclusion mode in the device."
+          }
+        },
+        "associationGroups": [ 1, 2, 7, 12, 17 ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline"
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Send Basic Report (On/Off) when button #1 is used."
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Sends Basic Set (On/Off) when button #1 is used."
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Sends Binary Switch Set (On/Off) when button #1 is used."
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Send Binary Toggle Switch Set when button #1 is used."
+            }
+          },
+          "6": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #1 is used."
+            }
+          },
+          "7": {
+            "hint": {
+              "en": "Send Basic Report (On/Off) when button #2 is used."
+            }
+          },
+          "8": {
+            "hint": {
+              "en": "Sends Basic Set (On/Off) when button #2 is used."
+            }
+          },
+          "9": {
+            "hint": {
+              "en": "Sends Binary Switch Set (On/Off) when button #2 is used."
+            }
+          },
+          "10": {
+            "hint": {
+              "en": "Send Binary Toggle Switch Set when button #2 is used."
+            }
+          },
+          "11": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #2 is used."
+            }
+          },
+          "12": {
+            "hint": {
+              "en": "Send Basic Report (On/Off) when button #3 is used."
+            }
+          },
+          "13": {
+            "hint": {
+              "en": "Sends Basic Set (On/Off) when button #3 is used."
+            }
+          },
+          "14": {
+            "hint": {
+              "en": "Sends Binary Switch Set (On/Off) when button #3 is used."
+            }
+          },
+          "15": {
+            "hint": {
+              "en": "Send Binary Toggle Switch Set when button #3 is used."
+            }
+          },
+          "16": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #3 is used."
+            }
+          },
+          "17": {
+            "hint": {
+              "en": "Send Basic Report (On/Off) when button #4 is used."
+            }
+          },
+          "18": {
+            "hint": {
+              "en": "Sends Basic Set (On/Off) when button #4 is used."
+            }
+          },
+          "19": {
+            "hint": {
+              "en": "Sends Binary Switch Set (On/Off) when button #4 is used."
+            }
+          },
+          "20": {
+            "hint": {
+              "en": "Send Binary Toggle Switch Set when button #4 is used."
+            }
+          },
+          "21": {
+            "hint": {
+              "en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #4 is used."
+            }
+          }
+        },
+        "multiChannelNodes": {
+          "1": {
+            "capabilities": [ "onoff", "dim" ],
+            "class": "light",
+            "icon": "/drivers/zhc5010/assets/icon_1.svg",
+            "name": {
+              "en": "Button 1"
+            }
+          },
+          "2": {
+            "class": "light",
+            "capabilities": [ "onoff", "dim" ],
+            "icon": "/drivers/zhc5010/assets/icon_2.svg",
+            "name": {
+              "en": "Button 2"
+            }
+          },
+          "3": {
+            "class": "light",
+            "capabilities": [ "onoff", "dim" ],
+            "icon": "/drivers/zhc5010/assets/icon_3.svg",
+            "name": {
+              "en": "Button 3"
+            }
+          },
+          "4": {
+            "class": "light",
+            "capabilities": [ "onoff", "dim" ],
+            "icon": "/drivers/zhc5010/assets/icon_4.svg",
+            "name": {
+              "en": "Button 4"
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": 1,
+          "value": "0",
+          "type": "dropdown",
+          "label": {
+            "en": "Upper paddle buttons mode."
+          },
+          "hint": {
+            "en": "Select Pair Mode for the upper two buttons (button #1 and #2)."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Separate mode (toggle mode)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "In pair mode; left side is on/up, right side is off/down"
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "value": "0",
+          "type": "dropdown",
+          "label": {
+            "en": "Lower paddle buttons mode."
+          },
+          "hint": {
+            "en": "Select Pair Mode for the lower two buttons (button #3 and #4)."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Separate mode (toggle mode)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "In pair mode; left side is on/up, right side is off/down"
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "LED #1 mode."
+          },
+          "hint": {
+            "en": "Configuration of the LED status indication."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the status of the corresponding button"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED indicates the status of the corresponding button, with inverted indication"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED indicates the status of corresponding paddle (in pair mode)"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "LED indicates the status of the built-in relay"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "LED indicates the status of the built-in relay, with inverted indication"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "LED #2 mode."
+          },
+          "hint": {
+            "en": "Configuration of the LED status indication."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the status of the corresponding button"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED indicates the status of the corresponding button, with inverted indication"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED indicates the status of corresponding paddle (in pair mode)"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "LED indicates the status of the built-in relay"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "LED indicates the status of the built-in relay, with inverted indication"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "LED #3 mode."
+          },
+          "hint": {
+            "en": "Configuration of the LED status indication."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the status of the corresponding button"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED indicates the status of the corresponding button, with inverted indication"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED indicates the status of corresponding paddle (in pair mode)"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "LED indicates the status of the built-in relay"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "LED indicates the status of the built-in relay, with inverted indication"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "LED #4 mode."
+          },
+          "hint": {
+            "en": "Configuration of the LED status indication"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "LED indicates the status of the corresponding button"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "LED indicates the status of the corresponding button, with inverted indication"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "LED indicates the status of corresponding paddle (in pair mode)"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "LED indicates the status of the built-in relay"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "LED indicates the status of the built-in relay, with inverted indication"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "value": 50,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #1 brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned on."
+          }
+        },
+        {
+          "id": 8,
+          "value": 50,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #2 brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned on."
+          }
+        },
+        {
+          "id": 9,
+          "value": 50,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #3 brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned on."
+          }
+        },
+        {
+          "id": 10,
+          "value": 50,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #4 brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned on."
+          }
+        },
+        {
+          "id": 11,
+          "value": 0,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #1 off brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+          }
+        },
+        {
+          "id": 12,
+          "value": 0,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #2 off brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+          }
+        },
+        {
+          "id": 13,
+          "value": 0,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #3 off brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+          }
+        },
+        {
+          "id": 14,
+          "value": 0,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 99
+          },
+          "label": {
+            "en": "LED #4 off brightness level."
+          },
+          "hint": {
+            "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+          }
+        },
+        {
+          "id": 15,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "Relay mode."
+          },
+          "hint": {
+            "en": "This parameter configures which of the buttons that shall control the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Relay is disabled"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Relay is controlled by button #1 or by upper paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Relay is controlled by button #2 or by upper paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Relay is controlled by button #3 or by lower paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Relay is controlled by button #4 or by lower paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "Relay is activated for half a second and is controlled by button #1 or by upper paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Relay is activated for half a second and is controlled by button #2 or by upper paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "Relay is activated for half a second and is controlled by button #3 or by lower paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Relay is activated for half a second and is controlled by button #4 or by lower paddle when pair mode is active"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Relay follows the state of button #1; button down => relay is on, button released => relay is off"
+              }
+            },
+            {
+              "id": "10",
+              "label": {
+                "en": "Relay follows the state of button #2; button down => relay is on, button released => relay is off"
+              }
+            },
+            {
+              "id": "11",
+              "label": {
+                "en": "Relay follows the state of button #3; button down => relay is on, button released => relay is off"
+              }
+            },
+            {
+              "id": "12",
+              "label": {
+                "en": "Relay follows the state of button #4; button down => relay is on, button released => relay is off"
+              }
+            },
+            {
+              "id": "13",
+              "label": {
+                "en": "Relay is only controlled by commands sent to the root device"
+              }
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "value": "1",
+          "type": "dropdown",
+          "label": {
+            "en": "Indicator mode."
+          },
+          "hint": {
+            "en": "When ZHC5010 receives an Indicator Set message, then the received value can be used only to set the current light level for the actual LED or the level value can be stored and will then be used for subsequent internal LED activations."
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Indicator Set level values are only used to control the LED"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Indicator Set level values are also used by internal LED activations"
+              }
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "value": 1,
+          "type": "number",
+          "attr": {
+            "min": 0,
+            "max": 200
+          },
+          "label": {
+            "en": "Scene notification offset"
+          },
+          "hint": {
+            "en": "Configure the scene sequence numbers that will be transmitted by Central Scene notifications, 0 == Scene notifications are turned off"
+          }
+        },
+        {
+          "id": 18,
+          "value": false,
+          "type": "checkbox",
+          "label": {
+            "en": "Disable House Cleaning Mode."
+          },
+          "hint": {
+            "en": "This parameter will enable or disable the so-called \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%"
+          }
+        },
+        {
+          "id": 23,
+          "value": true,
+          "type": "checkbox",
+          "label": {
+            "en": "Control of association groups for device 1 (button #1)"
+          },
+          "hint": {
+            "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+          }
+        },
+        {
+          "id": 24,
+          "value": true,
+          "type": "checkbox",
+          "label": {
+            "en": "Control of association groups for device 2 (button #2)"
+          },
+          "hint": {
+            "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+          }
+        },
+        {
+          "id": 25,
+          "value": true,
+          "type": "checkbox",
+          "label": {
+            "en": "Control of association groups for device 3 (button #3)"
+          },
+          "hint": {
+            "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+          }
+        },
+        {
+          "id": 26,
+          "value": true,
+          "type": "checkbox",
+          "label": {
+            "en": "Control of association groups for device 4 (button #4)"
+          },
+          "hint": {
+            "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+          }
+        }
+      ]
+    }
+  ]
+    }
