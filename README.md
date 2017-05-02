@@ -1,10 +1,10 @@
-
+ (
 # Logic Home Control
 
 This app adds support for Logic Home Control devices in Homey.
 
 ## Supported devices
-* ZHC5010, Wall switch module for FUGA® installations
+* ZHC5010, Wall switch module for FUGA® installations (http://logichome.dk/index.php/products/3-zhc5010-z-wave-switch-module-for-fuga-installations)
 
 ## Supported Languages:
 * English
