@@ -1,4 +1,3 @@
- (
 # Logic Home Control
 
 This app adds support for Logic Home Control devices in Homey.
