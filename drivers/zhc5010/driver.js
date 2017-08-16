@@ -141,7 +141,7 @@ module.exports.on('initNode', (token) => {
   const node = module.exports.nodes[token];
 
   if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
-    node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
+    node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', debounce((command, report) => {
       if (command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
 				report &&
 				report.hasOwnProperty('Properties1') &&
@@ -150,7 +150,7 @@ module.exports.on('initNode', (token) => {
           Homey.manager('flow').triggerDevice('zhc5010_scene', null, {
               button: report['Scene Number'].toString(), scene: report.Properties1['Key Attributes']}, node.device_data);
         }
-    });
+    }, 500);
   }
 });
 
@@ -255,3 +255,22 @@ Homey.manager('flow').on('action.zhc5010_set_led_flash', (callback, args) => {
 
   } else return callback('invalid_device');
 });
+
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};
