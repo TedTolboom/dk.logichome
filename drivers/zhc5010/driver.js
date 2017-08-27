@@ -140,16 +140,22 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 module.exports.on('initNode', (token) => {
   const node = module.exports.nodes[token];
 
+  var lastReceivedSequenceNumber = null;
   if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
-    node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
-      if (command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
-				report &&
-				report.hasOwnProperty('Properties1') &&
-				report.Properties1.hasOwnProperty('Key Attributes') &&
-				report.hasOwnProperty('Scene Number')) {
+      node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
+          if (command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
+          report &&
+          report.hasOwnProperty('Properties1') &&
+          report.Properties1.hasOwnProperty('Key Attributes') &&
+          report.hasOwnProperty('Scene Number') &&
+          report.hasOwnProperty('Sequence Number') &&
+          (!lastReceivedSequenceNumber || report['Sequence Number'] !== lastReceivedSequenceNumber)) {
+
+          lastReceivedSequenceNumber = report['Sequence Number'];
           Homey.manager('flow').triggerDevice('zhc5010_scene', null, {
-              button: report['Scene Number'].toString(), scene: report.Properties1['Key Attributes']}, node.device_data);
-        }
+              button: report['Scene Number'].toString(), scene: report.Properties1['Key Attributes']
+          }, node.device_data);
+      }
     });
   }
 });
