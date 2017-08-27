@@ -24,5 +24,7 @@ Triggers:
  * It is possible to control the 4 LED's, by means of action cards.
 
 ## Change Log:
+### v 1.0.1
+Filter out Central Scene messages with duplicate sequence numbers
 ### v 1.0.0
 Added support for ZHC5010 Wall switch module

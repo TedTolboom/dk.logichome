@@ -3,7 +3,7 @@
   "name": {
     "en": "Logic Home Control"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": "0.x || 1.x",
   "description": {
     "en": "Logic Home Control devices for Homey"
