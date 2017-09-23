@@ -4,7 +4,7 @@ const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
-	debug: false,
+	debug: true,
 	capabilities: {
 		onoff: {
 			command_class: 'COMMAND_CLASS_BASIC',
@@ -14,9 +14,13 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			}),
 			command_get: 'BASIC_GET',
 			command_report: 'BASIC_REPORT',
-			command_report_parser: report => {
-				if(report.hasOwnProperty('Current Value')) return report['Current Value'] !== 0;
-				if(report.hasOwnProperty('Value')) return report['Value'] !== 0;
+			command_report_parser: (report, node) => {
+				if(report.hasOwnProperty('Current Value')) {
+					return report['Current Value'] !== 0;
+				};
+				if(report.hasOwnProperty('Value')) {
+					return report['Value'] !== 0;
+				};
 				return null;
 			}
 		},
@@ -33,7 +37,15 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			},
 			command_report: 'SWITCH_MULTILEVEL_REPORT',
 			command_report_parser: (report, node) => {
-				if(typeof report.Value === 'number') {
+				if(report.Value === 'on/enable') {
+					module.exports.realtime(node.device_data, 'onoff', true);
+					return 1.0;
+				}
+				else if(report.Value === 'off/disable') {
+					module.exports.realtime(node.device_data, 'onoff', false);
+					return 0.0;
+				}
+				else if(typeof report.Value === 'number') {
 					module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
 					return report.Value / 99;
 				}
@@ -175,10 +187,14 @@ Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
 
 		const node = module.exports.nodes[args.device.token];
 
-		if(node.instance.CommandClass['COMMAND_CLASS_INDICATOR'] && node.instance.CommandClass['COMMAND_CLASS_INDICATOR'].version === 2) {
+		if(node &&
+			node.instance &&
+			node.instance.CommandClass &&
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR &&
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR.version === 2) {
 
 			// Send parameter values to module
-			node.instance.CommandClass['COMMAND_CLASS_INDICATOR'].INDICATOR_SET({
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR.INDICATOR_SET({
 				"Indicator 0 Value": 'off/disable',
 				"Properties1": {
 					"Indicator Object Count": 1,
@@ -220,10 +236,14 @@ Homey.manager('flow').on('action.zhc5010_set_led_flash', (callback, args) => {
 
 		const node = module.exports.nodes[args.device.token];
 
-		if(node.instance.CommandClass['COMMAND_CLASS_INDICATOR'] && node.instance.CommandClass['COMMAND_CLASS_INDICATOR'].version === 2) {
+		if(node &&
+			node.instance &&
+			node.instance.CommandClass &&
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR &&
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR.version === 2) {
 
 			// Send parameter values to module
-			node.instance.CommandClass['COMMAND_CLASS_INDICATOR'].INDICATOR_SET({
+			node.instance.CommandClass.COMMAND_CLASS_INDICATOR.INDICATOR_SET({
 				"Indicator 0 Value": 'off/disable',
 				"Properties1": {
 					"Indicator Object Count": 3,
