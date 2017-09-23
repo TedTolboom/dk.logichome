@@ -3,7 +3,7 @@
 	"name": {
 		"en": "Logic Home Control"
 	},
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"compatibility": "0.x || 1.x",
 	"description": {
 		"en": "Logic Home Control devices for Homey"
@@ -16,8 +16,8 @@
 		"small": "/assets/images/small.png"
 	},
 	"author": {
-		"name": "Logic Home Control ApS",
-		"email": "info@logichome.dk"
+		"name": "Ted Tolboo",
+		"email": "dTNL.Homey@gmail.com"
 	},
 	"contributors": {
 		"developers": [

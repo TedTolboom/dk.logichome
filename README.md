@@ -19,11 +19,13 @@ Triggers:
   * Double key press.
   * Long key press (key held).
   * Key release, after key held.
-  
+
  Actions:
  * It is possible to control the 4 LED's, by means of action cards.
 
 ## Change Log:
+### v 1.0.2
+Fix issue preventing driver to crash when using the "Set LED level" and "Set LED flash" flow cards    
 ### v 1.0.1
 Filter out Central Scene messages with duplicate sequence numbers
 ### v 1.0.0
