@@ -3,7 +3,7 @@
 	"name": {
 		"en": "Logic Home Control"
 	},
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"compatibility": "0.x || 1.x",
 	"description": {
 		"en": "Logic Home Control devices for Homey"
@@ -26,6 +26,14 @@
 				"email": "ktn@logichome.dk"
       }
     ]
+	},
+	"contributing": {
+		"donate": {
+			"paypal": {
+				"email": "dtnl.homey@gmail.com",
+				"currency": "EUR"
+			}
+		}
 	},
 	"capabilities": {},
 	"flow": {
