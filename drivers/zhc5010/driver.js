@@ -209,8 +209,8 @@ Homey.manager('flow').on('trigger.zhc5010_scene', (callback, args, state) => {
 });
 
 Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
-
-	if (args && args.device && args.device.token && args.led && args.level) {
+	if (args && args.device && args.device.token && args.led &&
+		typeof args.level === 'number') {
 
 		const node = module.exports.nodes[args.device.token];
 
@@ -258,8 +258,11 @@ Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
 });
 
 Homey.manager('flow').on('action.zhc5010_set_led_flash', (callback, args) => {
-
-	if (args && args.device && args.device.token && args.led && args.level && args.on_off_period && args.on_off_cycles) {
+	console.log(args)
+	if (args && args.device && args.device.token && args.led &&
+		typeof args.level === 'number' &&
+		typeof args.on_off_period === 'number' &&
+		typeof args.on_off_cycles === 'number') {
 
 		const node = module.exports.nodes[args.device.token];
 

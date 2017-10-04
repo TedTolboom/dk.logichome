@@ -35,6 +35,7 @@ Triggers:
 ## Change Log:
 ### v 1.0.3
 Fixed issue preventing status from being updated (manual action required! see note above)    
+Fixed issue with indicator flow card not able to turn of indicator LED   
 ### v 1.0.2
 Fix issue preventing driver to crash when using the "Set LED level" and "Set LED flash" flow cards    
 ### v 1.0.1
