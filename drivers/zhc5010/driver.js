@@ -15,48 +15,75 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 			command_get: 'BASIC_GET',
 			command_report: 'BASIC_REPORT',
 			command_report_parser: (report, node) => {
-				if(report.hasOwnProperty('Current Value')) {
+				if (report.hasOwnProperty('Current Value')) {
+					// module.exports.realtime(node.device_data, 'dim', (report['Current Value'] === 255 ? 1.0 : 0.0));
 					return report['Current Value'] !== 0;
 				};
-				if(report.hasOwnProperty('Value')) {
+				if (report.hasOwnProperty('Value')) {
+					// module.exports.realtime(node.device_data, 'dim', (report['Value'] === 255 ? 1.0 : 0.0));
 					return report['Value'] !== 0;
 				};
 				return null;
 			}
 		},
-		dim: {
-			command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
-			command_get: 'SWITCH_MULTILEVEL_GET',
-			command_set: 'SWITCH_MULTILEVEL_SET',
-			command_set_parser: (value, node) => {
-				module.exports.realtime(node.device_data, 'onoff', value > 0);
-				return {
-					'Value': value * 100,
-					'Dimming Duration': 'Default',
-				};
-			},
-			command_report: 'SWITCH_MULTILEVEL_REPORT',
-			command_report_parser: (report, node) => {
-				if(report.Value === 'on/enable') {
-					module.exports.realtime(node.device_data, 'onoff', true);
-					return 1.0;
+		dim: [{
+				command_class: 'COMMAND_CLASS_SWITCH_MULTILEVEL',
+				command_get: 'SWITCH_MULTILEVEL_GET',
+				command_set: 'SWITCH_MULTILEVEL_SET',
+				command_set_parser: (value, node) => {
+					module.exports.realtime(node.device_data, 'onoff', value > 0);
+					return {
+						'Value': value * 100,
+						'Dimming Duration': 'Default',
+					};
+				},
+				command_report: 'SWITCH_MULTILEVEL_SET',
+				command_report_parser: (report, node) => {
+					if (report.Value === 'on/enable') {
+						module.exports.realtime(node.device_data, 'onoff', true);
+						return 1.0;
+					}
+					else if (report.Value === 'off/disable') {
+						module.exports.realtime(node.device_data, 'onoff', false);
+						return 0.0;
+					}
+					else if (typeof report.Value === 'number') {
+						module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+						return report.Value / 99;
+					}
+					else if (typeof report['Value (Raw)'] !== 'undefined') {
+						module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
+						if (report['Value (Raw)'][0] === 255) return 1.0;
+						return report['Value (Raw)'][0] / 99;
+					}
+					return null;
+				},
+		},
+			{
+				command_class: 'COMMAND_CLASS_SWITCH_BINARY',
+				command_report: 'SWITCH_BINARY_SET',
+				command_report_parser: (report, node) => {
+					if (report['Switch Value'] === 'on/enable') {
+						module.exports.realtime(node.device_data, 'onoff', true);
+						return 1.0;
+					}
+					else if (report['Switch Value'] === 'off/disable') {
+						module.exports.realtime(node.device_data, 'onoff', false);
+						return 0.0;
+					}
+					else if (typeof report['Switch Value'] === 'number') {
+						module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
+						return report.Value / 99;
+					}
+					else if (typeof report['Switch Value (Raw)'] !== 'undefined') {
+						module.exports.realtime(node.device_data, 'onoff', report['Switch Value (Raw)'][0] > 0);
+						if (report['Switch Value (Raw)'][0] === 255) return 1.0;
+						return report['Switch Value (Raw)'][0] / 99;
+					}
+					return null;
 				}
-				else if(report.Value === 'off/disable') {
-					module.exports.realtime(node.device_data, 'onoff', false);
-					return 0.0;
-				}
-				else if(typeof report.Value === 'number') {
-					module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
-					return report.Value / 99;
-				}
-				else if(typeof report['Value (Raw)'] !== 'undefined') {
-					module.exports.realtime(node.device_data, 'onoff', report['Value (Raw)'][0] > 0);
-					if(report['Value (Raw)'][0] === 255) return 1.0;
-					return report['Value (Raw)'][0] / 99;
-				}
-				return null;
-			},
 		}
+	]
 	},
 	settings: {
 		1: {
@@ -155,9 +182,9 @@ module.exports.on('initNode', (token) => {
 	const node = module.exports.nodes[token];
 
 	var lastReceivedSequenceNumber = null;
-	if(node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
+	if (node && typeof node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE !== 'undefined') {
 		node.instance.CommandClass.COMMAND_CLASS_CENTRAL_SCENE.on('report', (command, report) => {
-			if(command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
+			if (command.name === 'CENTRAL_SCENE_NOTIFICATION' &&
 				report &&
 				report.hasOwnProperty('Properties1') &&
 				report.Properties1.hasOwnProperty('Key Attributes') &&
@@ -176,18 +203,18 @@ module.exports.on('initNode', (token) => {
 });
 
 Homey.manager('flow').on('trigger.zhc5010_scene', (callback, args, state) => {
-	if(args && state) {
+	if (args && state) {
 		return callback(null, state.button === args.button && state.scene === args.scene);
 	}
 });
 
 Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
 
-	if(args && args.device && args.device.token && args.led && args.level) {
+	if (args && args.device && args.device.token && args.led && args.level) {
 
 		const node = module.exports.nodes[args.device.token];
 
-		if(node &&
+		if (node &&
 			node.instance &&
 			node.instance.CommandClass &&
 			node.instance.CommandClass.COMMAND_CLASS_INDICATOR &&
@@ -210,13 +237,13 @@ Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
 			}, (err, result) => {
 
 				// If error, stop flow card
-				if(err) {
+				if (err) {
 					Homey.error(err);
 					return callback(null, false);
 				}
 
 				// If properly transmitted
-				if(result === "TRANSMIT_COMPLETE_OK") {
+				if (result === "TRANSMIT_COMPLETE_OK") {
 					return callback(null, true);
 				}
 
@@ -232,11 +259,11 @@ Homey.manager('flow').on('action.zhc5010_set_led_level', (callback, args) => {
 
 Homey.manager('flow').on('action.zhc5010_set_led_flash', (callback, args) => {
 
-	if(args && args.device && args.device.token && args.led && args.level && args.on_off_period && args.on_off_cycles) {
+	if (args && args.device && args.device.token && args.led && args.level && args.on_off_period && args.on_off_cycles) {
 
 		const node = module.exports.nodes[args.device.token];
 
-		if(node &&
+		if (node &&
 			node.instance &&
 			node.instance.CommandClass &&
 			node.instance.CommandClass.COMMAND_CLASS_INDICATOR &&
@@ -269,13 +296,13 @@ Homey.manager('flow').on('action.zhc5010_set_led_flash', (callback, args) => {
 			}, (err, result) => {
 
 				// If error, stop flow card
-				if(err) {
+				if (err) {
 					Homey.error(err);
 					return callback(null, false);
 				}
 
 				// If properly transmitted
-				if(result === "TRANSMIT_COMPLETE_OK") {
+				if (result === "TRANSMIT_COMPLETE_OK") {
 					return callback(null, true);
 				}
 
