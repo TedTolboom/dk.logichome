@@ -72,8 +72,8 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 						return 0.0;
 					}
 					else if (typeof report['Switch Value'] === 'number') {
-						module.exports.realtime(node.device_data, 'onoff', report.Value > 0);
-						return report.Value / 99;
+						module.exports.realtime(node.device_data, 'onoff', report['Switch Value'] > 0);
+						return report['Switch Value'] / 99;
 					}
 					else if (typeof report['Switch Value (Raw)'] !== 'undefined') {
 						module.exports.realtime(node.device_data, 'onoff', report['Switch Value (Raw)'][0] > 0);
