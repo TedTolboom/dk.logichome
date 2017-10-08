@@ -35,6 +35,7 @@ Triggers:
 ## Change Log:
 ### v 1.0.4
 Fixed minor error in switch Binary report parser in case a number is reported as Switch value   
+Fixed minor error where 'Scene notification offset' values higher than 128 are not transmitted correctly   
 ### v 1.0.3
 Fixed issue preventing status from being updated (manual action required! see note above)    
 Fixed issue with indicator flow card not able to turn of indicator LED   

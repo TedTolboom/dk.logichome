@@ -152,7 +152,8 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
 		},
 		17: {
 			index: 17,
-			size: 1
+			size: 1,
+			signed: false,
 		},
 		18: {
 			index: 18,
