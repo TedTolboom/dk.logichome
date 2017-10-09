@@ -1,4 +1,4 @@
-# Logic Home Control
+# Logic Home Control - DEVELOPMENT VERSION
 
 This app adds support for Logic Home Control devices in Homey.
 

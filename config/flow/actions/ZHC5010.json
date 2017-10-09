@@ -1,0 +1,128 @@
+[
+	{
+		"id": "ZHC5010_set_led_level",
+		"title": {
+			"en": "Set LED level"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010"
+      },
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Top left"
+						}
+          },
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Top right"
+						}
+          },
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Bottom left"
+						}
+          },
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Bottom right"
+						}
+          }
+        ]
+      },
+			{
+				"name": "level",
+				"type": "number",
+				"min": 0,
+				"max": 99,
+				"step": 1,
+				"placeholder": {
+					"en": "Light level"
+				}
+      }
+    ]
+  },
+	{
+		"id": "ZHC5010_set_led_flash",
+		"title": {
+			"en": "Set LED flash"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010"
+      },
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Top left"
+						}
+          },
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Top right"
+						}
+          },
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Bottom left"
+						}
+          },
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Bottom right"
+						}
+          }
+        ]
+      },
+			{
+				"name": "level",
+				"type": "number",
+				"min": 0,
+				"max": 99,
+				"step": 1,
+				"placeholder": {
+					"en": "Light level"
+				}
+      },
+			{
+				"name": "on_off_period",
+				"type": "number",
+				"min": 0,
+				"max": 25.5,
+				"step": 0.1,
+				"placeholder": {
+					"en": "On/Off period (0.1 - 25.5 seconds)"
+				}
+      },
+			{
+				"name": "on_off_cycles",
+				"type": "number",
+				"min": 0,
+				"max": 255,
+				"step": 1,
+				"placeholder": {
+					"en": "On/Off cycles (255 = forever)"
+				}
+      }
+    ]
+  }
+]

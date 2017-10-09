@@ -1,7 +1,16 @@
 'use strict';
 
+const Homey = require('homey');
 const Log = require('homey-log').Log;
 
-module.exports.init = () => {
-  console.log(`${Homey.manifest.id} running...`);
-};
+class LogicHomeControlApp extends Homey.App {
+
+	onInit() {
+
+		this.log('MCOhomeApp is running...');
+
+	}
+
+}
+
+module.exports = LogicHomeControlApp;

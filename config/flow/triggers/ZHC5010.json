@@ -1,0 +1,73 @@
+[{
+	"id": "ZHC5010_scene",
+	"title": {
+		"en": "Scene is activated"
+	},
+	"args": [
+		{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=ZHC5010"
+    },
+		{
+			"name": "button",
+			"type": "dropdown",
+			"values": [
+				{
+					"id": "1",
+					"label": {
+						"en": "Top left"
+					}
+        },
+				{
+					"id": "2",
+					"label": {
+						"en": "Top right"
+					}
+        },
+				{
+					"id": "3",
+					"label": {
+						"en": "Bottom left"
+					}
+        },
+				{
+					"id": "4",
+					"label": {
+						"en": "Bottom right"
+					}
+        }
+      ]
+    },
+		{
+			"name": "scene",
+			"type": "dropdown",
+			"values": [
+				{
+					"id": "Key Pressed 1 time",
+					"label": {
+						"en": "Pressed 1x"
+					}
+        },
+				{
+					"id": "Key Pressed 2 times",
+					"label": {
+						"en": "Pressed 2x"
+					}
+        },
+				{
+					"id": "Key Held Down",
+					"label": {
+						"en": "Held down"
+					}
+        },
+				{
+					"id": "Key Released",
+					"label": {
+						"en": "Press released"
+					}
+        }
+      ]
+    }
+  ]
+}]
