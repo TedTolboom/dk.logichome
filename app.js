@@ -7,7 +7,7 @@ class LogicHomeControlApp extends Homey.App {
 
 	onInit() {
 
-		this.log('MCOhomeApp is running...');
+		this.log('LogicHomeControlApp is running...');
 
 	}
 

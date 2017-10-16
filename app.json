@@ -7,11 +7,15 @@
   "version": "2.0.0",
   "compatibility": ">=1.5.0",
   "author": {
-    "name": "Ted Tolboo",
+    "name": "Ted Tolboom",
     "email": "dTNL.Homey@gmail.com"
   },
   "contributors": {
     "developers": [
+      {
+        "name": "Ted Tolboom",
+        "email": "dTNL.Homey@gmail.com"
+      },
       {
         "name": "Kim T. Nielsen",
         "email": "ktn@logichome.dk"
@@ -42,6 +46,44 @@
   "capabilities": {},
   "flow": {
     "triggers": [
+      {
+        "id": "ZHC_button",
+        "title": {
+          "en": "A button has been pressed",
+          "nl": "Een knop is ingedrukt"
+        },
+        "hint": {
+          "en": "This card will trigger on any button pressed and provides the button and scene tokens.",
+          "nl": "Deze kaart wordt geactiveerd bij iedere knop die ingedrukt wordt en biedt de knop en scene tokens aan."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=ZHC5010"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "button",
+            "type": "string",
+            "title": {
+              "en": "button",
+              "nl": "knop"
+            },
+            "example": "0"
+          },
+          {
+            "name": "scene",
+            "type": "string",
+            "title": {
+              "en": "scene",
+              "nl": "scene"
+            },
+            "example": "Button pressed (test)"
+          }
+        ]
+      },
       {
         "id": "ZHC5010_scene",
         "title": {
@@ -249,15 +291,13 @@
     {
       "id": "ZHC5010",
       "name": {
-        "en": "ZHC5010 - Button 1"
+        "en": "ZHC5010 - Relay"
       },
       "class": "light",
       "capabilities": [
-        "onoff",
-        "dim"
+        "onoff"
       ],
-      "capabilitiesOptions": {},
-      "image": "drivers/ZHC5010/assets/icon_1.svg",
+      "image": "drivers/ZHC5010/assets/icon.svg",
       "images": {
         "large": "/drivers/ZHC5010/assets/images/large.png",
         "small": "/drivers/ZHC5010/assets/images/small.png"
@@ -392,6 +432,17 @@
           }
         },
         "multiChannelNodes": {
+          "1": {
+            "class": "light",
+            "capabilities": [
+              "onoff",
+              "dim"
+            ],
+            "icon": "/drivers/ZHC5010/assets/icon_1.svg",
+            "name": {
+              "en": "Button 1"
+            }
+          },
           "2": {
             "class": "light",
             "capabilities": [
@@ -429,7 +480,7 @@
       },
       "settings": [
         {
-          "id": "upper_paddle_mode.",
+          "id": "upper_paddle_mode",
           "zwave": {
             "index": 1,
             "size": 1
@@ -458,7 +509,7 @@
           ]
         },
         {
-          "id": "lower_paddle_mode.",
+          "id": "lower_paddle_mode",
           "zwave": {
             "index": 2,
             "size": 1
@@ -487,7 +538,7 @@
           ]
         },
         {
-          "id": "relay_mode.",
+          "id": "relay_mode",
           "zwave": {
             "index": 15,
             "size": 1
@@ -678,7 +729,7 @@
           },
           "children": [
             {
-              "id": "led1_mode.",
+              "id": "led1_mode",
               "zwave": {
                 "index": 3,
                 "size": 1
@@ -942,7 +993,7 @@
           },
           "children": [
             {
-              "id": "led2_mode.",
+              "id": "led2_mode",
               "zwave": {
                 "index": 4,
                 "size": 1
@@ -1206,7 +1257,7 @@
           },
           "children": [
             {
-              "id": "led3_mode.",
+              "id": "led3_mode",
               "zwave": {
                 "index": 5,
                 "size": 1
@@ -1470,7 +1521,7 @@
           },
           "children": [
             {
-              "id": "led4_mode.",
+              "id": "led4_mode",
               "zwave": {
                 "index": 6,
                 "size": 1

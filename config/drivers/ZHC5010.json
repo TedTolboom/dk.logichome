@@ -1,12 +1,11 @@
 {
 	"id": "ZHC5010",
 	"name": {
-		"en": "ZHC5010 - Button 1"
+		"en": "ZHC5010 - Relay"
 	},
 	"class": "light",
-	"capabilities": ["onoff", "dim"],
-	"capabilitiesOptions": {},
-	"image": "drivers/ZHC5010/assets/icon_1.svg",
+	"capabilities": ["onoff"],
+	"image": "drivers/ZHC5010/assets/icon.svg",
 	"images": {
 		"large": "/drivers/ZHC5010/assets/images/large.png",
 		"small": "/drivers/ZHC5010/assets/images/small.png"
@@ -136,6 +135,14 @@
 			}
 		},
 		"multiChannelNodes": {
+			"1": {
+				"class": "light",
+				"capabilities": ["onoff", "dim"],
+				"icon": "/drivers/ZHC5010/assets/icon_1.svg",
+				"name": {
+					"en": "Button 1"
+				}
+			},
 			"2": {
 				"class": "light",
 				"capabilities": ["onoff", "dim"],
@@ -164,7 +171,7 @@
 	},
 	"settings": [
 		{
-			"id": "upper_paddle_mode.",
+			"id": "upper_paddle_mode",
 			"zwave": {
 				"index": 1,
 				"size": 1
@@ -193,7 +200,7 @@
       ]
     },
 		{
-			"id": "lower_paddle_mode.",
+			"id": "lower_paddle_mode",
 			"zwave": {
 				"index": 2,
 				"size": 1
@@ -222,7 +229,7 @@
       ]
     },
 		{
-			"id": "relay_mode.",
+			"id": "relay_mode",
 			"zwave": {
 				"index": 15,
 				"size": 1
@@ -413,7 +420,7 @@
 			},
 			"children": [
 				{
-					"id": "led1_mode.",
+					"id": "led1_mode",
 					"zwave": {
 						"index": 3,
 						"size": 1
@@ -678,7 +685,7 @@
 			},
 			"children": [
 				{
-					"id": "led2_mode.",
+					"id": "led2_mode",
 					"zwave": {
 						"index": 4,
 						"size": 1
@@ -943,7 +950,7 @@
 			},
 			"children": [
 				{
-					"id": "led3_mode.",
+					"id": "led3_mode",
 					"zwave": {
 						"index": 5,
 						"size": 1
@@ -1208,7 +1215,7 @@
 			},
 			"children": [
 				{
-					"id": "led4_mode.",
+					"id": "led4_mode",
 					"zwave": {
 						"index": 6,
 						"size": 1
