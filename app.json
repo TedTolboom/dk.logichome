@@ -488,7 +488,7 @@
             ],
             "icon": "/drivers/ZHC5010/assets/icon_1.svg",
             "name": {
-              "en": "Button 1"
+              "en": "ZHC5010 - Button 1"
             }
           },
           "2": {
@@ -499,7 +499,7 @@
             ],
             "icon": "/drivers/ZHC5010/assets/icon_2.svg",
             "name": {
-              "en": "Button 2"
+              "en": "ZHC5010 - Button 2"
             }
           },
           "3": {
@@ -510,7 +510,7 @@
             ],
             "icon": "/drivers/ZHC5010/assets/icon_3.svg",
             "name": {
-              "en": "Button 3"
+              "en": "ZHC5010 - Button 3"
             }
           },
           "4": {
@@ -521,7 +521,7 @@
             ],
             "icon": "/drivers/ZHC5010/assets/icon_4.svg",
             "name": {
-              "en": "Button 4"
+              "en": "ZHC5010 - Button 4"
             }
           }
         },
@@ -558,7 +558,7 @@
           "value": "0",
           "type": "dropdown",
           "label": {
-            "en": "Upper paddle buttons mode"
+            "en": "Upper paddle buttons"
           },
           "hint": {
             "en": "Select Pair Mode for the upper two buttons (button #1 and #2)."
@@ -587,7 +587,7 @@
           "value": "0",
           "type": "dropdown",
           "label": {
-            "en": "Lower paddle buttons mode."
+            "en": "Lower paddle buttons"
           },
           "hint": {
             "en": "Select Pair Mode for the lower two buttons (button #3 and #4)."
@@ -616,10 +616,10 @@
           "value": "1",
           "type": "dropdown",
           "label": {
-            "en": "Relay mode."
+            "en": "Relay mode"
           },
           "hint": {
-            "en": "This parameter configures which of the buttons that shall control the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
+            "en": "This parameter configures which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
           },
           "values": [
             {
@@ -717,7 +717,7 @@
           "value": "1",
           "type": "dropdown",
           "label": {
-            "en": "Indicator mode."
+            "en": "Indicator mode"
           },
           "hint": {
             "en": "When ZHC5010 receives an Indicator Set message, then the received value can be used only to set the current light level for the actual LED or the level value can be stored and will then be used for subsequent internal LED activations."
@@ -766,7 +766,7 @@
           "value": false,
           "type": "checkbox",
           "label": {
-            "en": "Disable House Cleaning Mode."
+            "en": "Disable House Cleaning Mode"
           },
           "hint": {
             "en": "This parameter will enable or disable the so-called \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%"
@@ -1834,7 +1834,7 @@
                   }
                 },
                 {
-                  "id": "but5_nonsec_bit5",
+                  "id": "but4_nonsec_bit5",
                   "value": false,
                   "type": "checkbox",
                   "label": {
