@@ -26,7 +26,7 @@
 				"en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXCACTLY 3 times to activate exclusion mode in the device."
 			}
 		},
-		"associationGroups": [1, 2, 4, 6],
+		"associationGroups": [1, 2, 6, 7, 11, 12, 16, 17, 21],
 		"associationGroupsOptions": {
 			"1": {
 				"hint": {
@@ -167,7 +167,28 @@
 					"en": "Button 4"
 				}
 			}
-		}
+		},
+		"defaultConfiguration": [{
+				"id": 19,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 20,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 21,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 22,
+				"size": 4,
+				"value": 23265280
+			}
+		]
 	},
 	"settings": [
 		{
@@ -567,7 +588,7 @@
 						},
 						{
 							"id": "but1_multilevel_byte2",
-							"value": 255,
+							"value": 99,
 							"type": "number",
 							"attr": {
 								"min": 0,
@@ -832,7 +853,7 @@
 						},
 						{
 							"id": "but2_multilevel_byte2",
-							"value": 255,
+							"value": 99,
 							"type": "number",
 							"attr": {
 								"min": 0,
@@ -1097,7 +1118,7 @@
 						},
 						{
 							"id": "but3_multilevel_byte2",
-							"value": 255,
+							"value": 99,
 							"type": "number",
 							"attr": {
 								"min": 0,
@@ -1362,7 +1383,7 @@
 						},
 						{
 							"id": "but4_multilevel_byte2",
-							"value": 255,
+							"value": 99,
 							"type": "number",
 							"attr": {
 								"min": 0,
