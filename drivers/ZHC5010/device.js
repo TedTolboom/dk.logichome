@@ -26,7 +26,7 @@ class ZHC5010 extends ZwaveDevice {
 					set: 'BASIC_SET',
 					setParserV1: value => ({
 						'Value': (value) ? 255 : 0,
-					}),*/
+					}),
 				report: 'BASIC_REPORT',
 				reportParserV1: (report, node) => {
 					if (report && report.hasOwnProperty('Value')) {
@@ -34,7 +34,7 @@ class ZHC5010 extends ZwaveDevice {
 						return report.Value === 255;
 					}
 					return null;
-				},
+				},*/
 			}),
 			/*
 			this.registerCapability('onoff', 'SWITCH_MULTILEVEL', {
