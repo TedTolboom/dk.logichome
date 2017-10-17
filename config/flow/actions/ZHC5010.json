@@ -124,5 +124,48 @@
 				}
       }
     ]
-  }
+  },
+	{
+		"id": "ZHC5010_stop_led_flash",
+		"title": {
+			"en": "Stop LED flash"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010"
+			},
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Top left"
+						}
+					},
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Top right"
+						}
+					},
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Bottom left"
+						}
+					},
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Bottom right"
+						}
+					}
+				]
+			}
+		]
+	}
 ]
