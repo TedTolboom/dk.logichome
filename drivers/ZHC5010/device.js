@@ -6,7 +6,12 @@ const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 class ZHC5010 extends ZwaveDevice {
 	onMeshInit() {
 		let PreviousSequenceNo = null;
-		const dimmingDuration = 'Instantly'; // 'Default'// Factory Default
+		const dimmingDuration = 255 // 'Instantly'; // 'Default'// Factory Default
+
+		process.on('unhandledRejection', error => {
+			console.error(error.stack);
+		})
+
 		// enable debugging
 		this.enableDebug();
 
@@ -22,20 +27,22 @@ class ZHC5010 extends ZwaveDevice {
 					// getOnWakeUp: true, // only useful for battery devices
 				},
 				/*
-					get: 'BASIC_GET',
-					set: 'BASIC_SET',
-					setParserV1: value => ({
-						'Value': (value) ? 255 : 0,
-					}),
+				get: 'BASIC_GET',
+				set: 'BASIC_SET',
+				setParserV1: value => ({
+					'Value': (value) ? 255 : 0,
+				}),
 				report: 'BASIC_REPORT',
-				reportParserV1: (report, node) => {
+				reportParserV1: (report, this.node) => {
 					if (report && report.hasOwnProperty('Value')) {
-						this.log('reported node:', this.node.MultiChannelNodes);
+						this.log('reported node:', node);
 						return report.Value === 255;
 					}
 					return null;
-				},*/
+				},
+				*/
 			}),
+
 			/*
 			this.registerCapability('onoff', 'SWITCH_MULTILEVEL', {
 				getOpts: {
@@ -72,7 +79,7 @@ class ZHC5010 extends ZwaveDevice {
 					this.log('setting dim level to: ', value * 99);
 					const setValue = {
 						Value: Math.round(value * 99),
-						'Dimming Duration': dimmingDuration,
+						'Dimming Duration': new Buffer([dimmingDuration]) // dimmingDuration,
 					}
 					return setValue
 				},
@@ -90,20 +97,22 @@ class ZHC5010 extends ZwaveDevice {
 		// OPEN WORK: compensate for Parameter Number 17, Parameter Size 1. Scene notification offset.
 		this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', (rawReport, parsedReport) => {
 			this.log('registerReportListener', rawReport, parsedReport);
-			var sceneOffset = this.getSettings().scene_offset;
-			this.log('scene_offset: ', sceneOffset, 'actual button: button', sceneOffset)
+			// this.log('this:', this.device);
+			// let sceneOffset = this.getSetting('scene_offset');
+			// this.log('Current scene offset: ', sceneOffset, sceneOffset - 1)
 			if (rawReport &&
 				rawReport.hasOwnProperty('Properties1') &&
 				rawReport.Properties1.hasOwnProperty('Key Attributes') &&
 				rawReport.hasOwnProperty('Scene Number') &&
 				rawReport.hasOwnProperty('Sequence Number')) {
 				if (rawReport['Sequence Number'] !== PreviousSequenceNo) {
-					// var scene = Number(rawReport.Properties1['Key Attributes']);
+					// const reportButton = rawReport['Scene Number'];
+					// const actualButton = reportButton - (sceneOffset - 1);
+					// this.log('reportButton: ', reportButton, 'actualButton: ', actualButton)
 					const remoteValue = {
-						button: rawReport['Scene Number'].toString(),
+						button: rawReport['Scene Number'], // actualButton.toString(),
 						scene: rawReport.Properties1['Key Attributes'],
 					};
-					// this.log('actual button: button', typeof (remoteValue.scene), typeof (sceneOffset));
 					PreviousSequenceNo = rawReport['Scene Number'] + '_' + rawReport['Sequence Number'];
 					this.log('remoteValue: ', remoteValue, 'New previousSequenceNo: ', PreviousSequenceNo)
 					// Trigger the trigger card with 2 dropdown options
