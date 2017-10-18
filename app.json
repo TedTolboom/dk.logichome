@@ -340,6 +340,11 @@
       "capabilities": [
         "onoff"
       ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
       "image": "drivers/ZHC5010/assets/icon.svg",
       "images": {
         "large": "/drivers/ZHC5010/assets/images/large.png",
@@ -619,7 +624,7 @@
             "en": "Relay mode"
           },
           "hint": {
-            "en": "This parameter configures which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
+            "en": "Which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
           },
           "values": [
             {
@@ -754,7 +759,7 @@
             "en": "Scene notification offset"
           },
           "hint": {
-            "en": "Configure the scene sequence numbers that will be transmitted by Central Scene notifications: \n0 == Scene notifications are turned off\nButton #1 will send scene [value], button #2 will send scene [value] + 1, button #3 will send scene [value] + 2, button #4 will send scene [value] + 3.\nDefault = 1"
+            "en": "Configure the scene sequence numbers that will be transmitted by Central Scene notifications: \n0 == Scene notifications are turned off\nbutton #1 will send scene [value],\nbutton #2 will send scene [value] + 1,\nbutton #3 will send scene [value] + 2,\nbutton #4 will send scene [value] + 3.\nDefault = 1"
           }
         },
         {
