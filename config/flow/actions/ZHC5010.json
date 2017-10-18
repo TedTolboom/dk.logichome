@@ -4,58 +4,8 @@
 		"title": {
 			"en": "Set LED level"
 		},
-		"args": [
-			{
-				"name": "device",
-				"type": "device",
-				"filter": "driver_id=ZHC5010"
-      },
-			{
-				"name": "led",
-				"type": "dropdown",
-				"values": [
-					{
-						"id": "BUTTON1_INDICATION",
-						"label": {
-							"en": "Top left"
-						}
-          },
-					{
-						"id": "BUTTON2_INDICATION",
-						"label": {
-							"en": "Top right"
-						}
-          },
-					{
-						"id": "BUTTON3_INDICATION",
-						"label": {
-							"en": "Bottom left"
-						}
-          },
-					{
-						"id": "BUTTON4_INDICATION",
-						"label": {
-							"en": "Bottom right"
-						}
-          }
-        ]
-      },
-			{
-				"name": "level",
-				"type": "number",
-				"min": 0,
-				"max": 99,
-				"step": 1,
-				"placeholder": {
-					"en": "Light level"
-				}
-      }
-    ]
-  },
-	{
-		"id": "ZHC5010_set_led_flash",
-		"title": {
-			"en": "Set LED flash"
+		"hint": {
+			"en": "Set the \"indicator LED brightness level\" for a specific button. \nRange: 0 - 100 percentage of brightness.\n0 = indicator LED switched OFF"
 		},
 		"args": [
 			{
@@ -70,38 +20,92 @@
 					{
 						"id": "BUTTON1_INDICATION",
 						"label": {
-							"en": "Top left"
+							"en": "Button 1"
 						}
           },
 					{
 						"id": "BUTTON2_INDICATION",
 						"label": {
-							"en": "Top right"
+							"en": "Button 2"
 						}
           },
 					{
 						"id": "BUTTON3_INDICATION",
 						"label": {
-							"en": "Bottom left"
+							"en": "Button 3"
 						}
           },
 					{
 						"id": "BUTTON4_INDICATION",
 						"label": {
-							"en": "Bottom right"
+							"en": "Button 4"
 						}
           }
         ]
       },
 			{
 				"name": "level",
-				"type": "number",
+				"type": "range",
 				"min": 0,
-				"max": 99,
-				"step": 1,
-				"placeholder": {
-					"en": "Light level"
-				}
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+      }
+    ]
+  },
+	{
+		"id": "ZHC5010_set_led_flash",
+		"title": {
+			"en": "Set LED flash"
+		},
+		"hint": {
+			"en": "Set the \"indicator LED flashing conditions\" for a specific button. \nLevel\nRange: 0 - 100 percentage of brightness.\n0 = indicator LED switched OFF\nOn/Off period:\nRange: 0.1 - 25.5 seconds\nOn/Off cycles:\nRange: 0 - 255, 0 = off, 255 = forever"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010"
+      },
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Button 1"
+						}
+          },
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Button 2"
+						}
+          },
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Button 3"
+						}
+          },
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Button 4"
+						}
+          }
+        ]
+      },
+			{
+				"name": "level",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
       },
 			{
 				"name": "on_off_period",
@@ -110,7 +114,7 @@
 				"max": 25.5,
 				"step": 0.1,
 				"placeholder": {
-					"en": "On/Off period (0.1 - 25.5 seconds)"
+					"en": "On/Off period (seconds)"
 				}
       },
 			{
@@ -120,7 +124,7 @@
 				"max": 255,
 				"step": 1,
 				"placeholder": {
-					"en": "On/Off cycles (255 = forever)"
+					"en": "On/Off cycles"
 				}
       }
     ]
@@ -129,6 +133,9 @@
 		"id": "ZHC5010_stop_led_flash",
 		"title": {
 			"en": "Stop LED flash"
+		},
+		"hint": {
+			"en": "Stop the \"indicator LED flashing conditions\" for a specific button."
 		},
 		"args": [
 			{
@@ -143,25 +150,25 @@
 					{
 						"id": "BUTTON1_INDICATION",
 						"label": {
-							"en": "Top left"
+							"en": "Button 1"
 						}
 					},
 					{
 						"id": "BUTTON2_INDICATION",
 						"label": {
-							"en": "Top right"
+							"en": "Button 2"
 						}
 					},
 					{
 						"id": "BUTTON3_INDICATION",
 						"label": {
-							"en": "Bottom left"
+							"en": "Button 3"
 						}
 					},
 					{
 						"id": "BUTTON4_INDICATION",
 						"label": {
-							"en": "Bottom right"
+							"en": "Button 4"
 						}
 					}
 				]

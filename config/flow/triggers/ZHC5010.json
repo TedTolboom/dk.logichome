@@ -3,6 +3,9 @@
 	"title": {
 		"en": "Scene is activated"
 	},
+	"hint": {
+		"en": "This card will trigger on a specific button and scene combination pressed ."
+	},
 	"args": [
 		{
 			"name": "device",
@@ -16,25 +19,25 @@
 				{
 					"id": "1",
 					"label": {
-						"en": "Top left"
+						"en": "Button 1"
 					}
         },
 				{
 					"id": "2",
 					"label": {
-						"en": "Top right"
+						"en": "Button 2"
 					}
         },
 				{
 					"id": "3",
 					"label": {
-						"en": "Bottom left"
+						"en": "Button 3"
 					}
         },
 				{
 					"id": "4",
 					"label": {
-						"en": "Bottom right"
+						"en": "Button 4"
 					}
         }
       ]

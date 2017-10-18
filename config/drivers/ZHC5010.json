@@ -416,7 +416,7 @@
 				"en": "Disable House Cleaning Mode"
 			},
 			"hint": {
-				"en": "This parameter will enable or disable the so-called \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%"
+				"en": "This parameter will enable or disable the so-called \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%\nDefault: Enabled"
 			}
     },
 		{
@@ -436,7 +436,7 @@
 				"en": "Buttons long-press threshold"
 			},
 			"hint": {
-				"en": "Decides the time for when a button is detected as long-pressed.\n0: Detection disabled. This is not recommended.\n 1 - 255: Detection time in 0.01 seconds, 30 equals 0.3 seconds. (Default value is 30)"
+				"en": "Decides the time for when a button is detected as long-pressed.\n0: Detection disabled. This is not recommended.\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: value is 30, equals 0.3 seconds."
 			}
 		},
 		{
@@ -444,6 +444,7 @@
 			"label": {
 				"en": "Settings Button 1"
 			},
+			"collapsed": true,
 			"children": [
 				{
 					"id": "led1_mode",
@@ -709,6 +710,7 @@
 			"label": {
 				"en": "Settings Button 2"
 			},
+			"collapsed": true,
 			"children": [
 				{
 					"id": "led2_mode",
@@ -974,6 +976,7 @@
 			"label": {
 				"en": "Settings Button 3"
 			},
+			"collapsed": true,
 			"children": [
 				{
 					"id": "led3_mode",
@@ -1239,6 +1242,7 @@
 			"label": {
 				"en": "Settings Button 4"
 			},
+			"collapsed": true,
 			"children": [
 				{
 					"id": "led4_mode",

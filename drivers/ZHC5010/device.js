@@ -122,7 +122,7 @@ class ZHC5010 extends ZwaveDevice {
 					{
 						'Indicator ID': args.led,
 						'Property ID': 'Multilevel',
-						Value: args.level
+						Value: args.level * 99
           }
         ]
 			});
@@ -148,7 +148,7 @@ class ZHC5010 extends ZwaveDevice {
 					{
 						'Indicator ID': args.led,
 						'Property ID': 'Multilevel',
-						Value: args.level
+						Value: args.level * 99
           },
 					{
 						'Indicator ID': args.led,
