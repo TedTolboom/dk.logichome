@@ -60,7 +60,7 @@ class ZHC5010 extends ZwaveDevice {
 				report: 'SWITCH_MULTILEVEL_SET',
 				reportParserV4: report => {
 					if (report && report.hasOwnProperty('Value (Raw)')) {
-						if (report['Value (Raw)'][0] === 255) return 1;
+						if (report['Value (Raw)'][0] === 255) return 1; // OPEN WORK: go to last known dim-level; store as variable per end-point
 						return report['Value (Raw)'][0] / 99;
 					}
 					return null;
@@ -259,7 +259,7 @@ class ZHC5010 extends ZwaveDevice {
 				return super.onSettings(oldSettings, newSettings, changedKeysArr);
 			})
 			.then((result) => {
-				this.log('Device settings have been saved');
+				this.log('Device settings have been saved for:', changedKeysArr);
 				callback(null, result);
 				return result;
 			})

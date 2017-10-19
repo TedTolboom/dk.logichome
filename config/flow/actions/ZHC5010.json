@@ -132,7 +132,7 @@
 	{
 		"id": "ZHC5010_stop_led_flash",
 		"title": {
-			"en": "Stop LED flash"
+			"en": "Turn off LED / Stop flashing"
 		},
 		"hint": {
 			"en": "Stop the \"indicator LED flashing conditions\" for a specific button."
