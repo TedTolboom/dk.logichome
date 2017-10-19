@@ -576,7 +576,7 @@
             "en": "Upper paddle buttons"
           },
           "hint": {
-            "en": "Select Pair Mode for the upper two buttons (button #1 and #2)."
+            "en": "Select Pair Mode for the upper two buttons (button #1 and #2).\nParameter: 1"
           },
           "values": [
             {
@@ -605,7 +605,7 @@
             "en": "Lower paddle buttons"
           },
           "hint": {
-            "en": "Select Pair Mode for the lower two buttons (button #3 and #4)."
+            "en": "Select Pair Mode for the lower two buttons (button #3 and #4).\nParameter: 2"
           },
           "values": [
             {
@@ -634,7 +634,7 @@
             "en": "Relay mode"
           },
           "hint": {
-            "en": "Which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used."
+            "en": "Define which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used.\nParameter: 15"
           },
           "values": [
             {
@@ -735,7 +735,7 @@
             "en": "Indicator mode"
           },
           "hint": {
-            "en": "When ZHC5010 receives an Indicator Set message, then the received value can be used only to set the current light level for the actual LED or the level value can be stored and will then be used for subsequent internal LED activations."
+            "en": "When ZHC5010 receives an Indicator Set message, then the received value can be used only to set the current light level for the actual LED or the level value can be stored and will then be used for subsequent internal LED activations.\nParameter: 16"
           },
           "values": [
             {
@@ -769,7 +769,7 @@
             "en": "Scene notification offset"
           },
           "hint": {
-            "en": "Configure the scene sequence numbers that will be transmitted by Central Scene notifications: \n0 == Scene notifications are turned off\nbutton #1 will send scene [value],\nbutton #2 will send scene [value] + 1,\nbutton #3 will send scene [value] + 2,\nbutton #4 will send scene [value] + 3.\nDefault = 1"
+            "en": "Configure the scene sequence numbers that will be transmitted by Central Scene notifications: \nParameter: 17\nRange: 0 - 200\n0 == Scene notifications are turned off\nbutton #1 will send scene [value],\nbutton #2 will send scene [value] + 1,\nbutton #3 will send scene [value] + 2,\nbutton #4 will send scene [value] + 3.\nDefault = 1"
           }
         },
         {
@@ -784,7 +784,7 @@
             "en": "Disable House Cleaning Mode"
           },
           "hint": {
-            "en": "This parameter will enable or disable the so-called \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%\nDefault: Enabled"
+            "en": "Enable or disable the \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%\nParameter: 18\nDefault: Enabled (unchecked)"
           }
         },
         {
@@ -801,10 +801,10 @@
             "max": 255
           },
           "label": {
-            "en": "Buttons long-press threshold"
+            "en": "Long-press threshold"
           },
           "hint": {
-            "en": "Decides the time for when a button is detected as long-pressed.\n0: Detection disabled. This is not recommended.\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: value is 30, equals 0.3 seconds."
+            "en": "Determine the time interval for which a button press is detected as long-pressed.\nParameter: 28\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 50, equals 0.5 seconds.\n0: Detection disabled. This is not recommended."
           }
         },
         {
@@ -826,7 +826,7 @@
                 "en": "LED mode"
               },
               "hint": {
-                "en": "Configuration of the LED status indication."
+                "en": "Configure the LED status indication for LED 1\nParameter: 3"
               },
               "values": [
                 {
@@ -901,7 +901,7 @@
                 "en": "LED ON brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned on."
+                "en": "Configure the percentage of light in the LED, when the LED is turned ON.\nParameter: 7\nRange: 0 - 99\nDefault: 50 %"
               }
             },
             {
@@ -920,7 +920,7 @@
                 "en": "LED OFF brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+                "en": "Configure the percentage of light in the LED, when the LED is turned OFF.\nParameter: 11\nRange: 0 - 99\nDefault: 0 %"
               }
             },
             {
@@ -940,7 +940,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\n0: Detection disabled. This is not recommended.\n 1 - 255: Long-press detection time in 0.01 seconds, 50 equals 0.5 seconds. (Default value is 50)"
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 29\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -957,7 +957,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)"
+                    "en": "When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values.\nParameter: 19 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -972,7 +972,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
                   }
                 },
                 {
@@ -987,7 +987,7 @@
                     "en": "lower switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
                   }
                 }
               ]
@@ -1004,13 +1004,13 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 23\nDefault: enabled"
               }
             },
             {
               "type": "group",
               "label": {
-                "en": "Non-secure commands"
+                "en": "Non-secure commands (FW > 2.0)"
               },
               "children": [
                 {
@@ -1021,7 +1021,7 @@
                     "en": "Group 2 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure"
+                    "en": "Basic Report is sent non-secure\nParameter: 33 (bit 1)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1032,7 +1032,7 @@
                     "en": "Group 3 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure."
+                    "en": "Basic Set is sent non-secure\nParameter: 33 (bit 2)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1043,7 +1043,7 @@
                     "en": "Group 4 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure."
+                    "en": "Binary Switch Set is sent non-secure\nParameter: 33 (bit 3)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1054,7 +1054,7 @@
                     "en": "Group 5 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure."
+                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 33 (bit 4)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1065,7 +1065,7 @@
                     "en": "Group 6 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure."
+                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 33 (bit 5)\nDefault: unchecked (commands sent secure)"
                   }
                 }
               ]
@@ -1091,7 +1091,7 @@
                 "en": "LED mode"
               },
               "hint": {
-                "en": "Configuration of the LED status indication."
+                "en": "Configure the LED status indication for LED 2\nParameter: 4"
               },
               "values": [
                 {
@@ -1166,7 +1166,7 @@
                 "en": "LED ON brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned on."
+                "en": "Configure the percentage of light in the LED, when the LED is turned ON.\nParameter: 8\nRange: 0 - 99\nDefault: 50 %"
               }
             },
             {
@@ -1185,7 +1185,7 @@
                 "en": "LED OFF brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+                "en": "Configure the percentage of light in the LED, when the LED is turned OFF.\nParameter: 12\nRange: 0 - 99\nDefault: 0 %"
               }
             },
             {
@@ -1205,7 +1205,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\n0: Detection disabled. This is not recommended.\n 1 - 255: Long-press detection time in 0.01 seconds, 50 equals 0.5 seconds. (Default value is 50)"
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1222,7 +1222,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 11 will be switched between the configured upper and lower switch values. (Default)"
+                    "en": "When single pressing the button, nodes associated to group 11 will be switched between the configured upper and lower switch values.\nParameter: 20 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1237,7 +1237,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 20 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
                   }
                 },
                 {
@@ -1252,7 +1252,7 @@
                     "en": "lower switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 20 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
                   }
                 }
               ]
@@ -1269,13 +1269,13 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 24\nDefault: enabled"
               }
             },
             {
               "type": "group",
               "label": {
-                "en": "Non-secure commands"
+                "en": "Non-secure commands (FW > 2.0)"
               },
               "children": [
                 {
@@ -1286,7 +1286,7 @@
                     "en": "Group 7 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure"
+                    "en": "Basic Report is sent non-secure\nParameter: 34 (bit 1)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1297,7 +1297,7 @@
                     "en": "Group 8 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure."
+                    "en": "Basic Set is sent non-secure\nParameter: 34 (bit 2)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1308,7 +1308,7 @@
                     "en": "Group 9 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure."
+                    "en": "Binary Switch Set is sent non-secure\nParameter: 34 (bit 3)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1319,7 +1319,7 @@
                     "en": "Group 10 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure."
+                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 34 (bit 4)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1330,7 +1330,7 @@
                     "en": "Group 11 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure."
+                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 34 (bit 5)\nDefault: unchecked (commands sent secure)"
                   }
                 }
               ]
@@ -1356,7 +1356,7 @@
                 "en": "LED mode"
               },
               "hint": {
-                "en": "Configuration of the LED status indication."
+                "en": "Configure the LED status indication for LED 3\nParameter: 5"
               },
               "values": [
                 {
@@ -1431,7 +1431,7 @@
                 "en": "LED ON brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned on."
+                "en": "Configure the percentage of light in the LED, when the LED is turned ON.\nParameter: 9\nRange: 0 - 99\nDefault: 50 %"
               }
             },
             {
@@ -1450,7 +1450,7 @@
                 "en": "LED OFF brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+                "en": "Configure the percentage of light in the LED, when the LED is turned OFF.\nParameter: 13\nRange: 0 - 99\nDefault: 0 %"
               }
             },
             {
@@ -1470,7 +1470,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\n0: Detection disabled. This is not recommended.\n 1 - 255: Long-press detection time in 0.01 seconds, 50 equals 0.5 seconds. (Default value is 50)"
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 31\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1487,7 +1487,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 16 will be switched between the configured upper and lower switch values. (Default)"
+                    "en": "When single pressing the button, nodes associated to group 16 will be switched between the configured upper and lower switch values.\nParameter: 21 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1502,7 +1502,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 21 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
                   }
                 },
                 {
@@ -1517,7 +1517,7 @@
                     "en": "lower switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 21 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
                   }
                 }
               ]
@@ -1534,13 +1534,13 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: enabled"
               }
             },
             {
               "type": "group",
               "label": {
-                "en": "Non-secure commands"
+                "en": "Non-secure commands (FW > 2.0)"
               },
               "children": [
                 {
@@ -1551,7 +1551,7 @@
                     "en": "Group 12 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure"
+                    "en": "Basic Report is sent non-secure\nParameter: 35 (bit 1)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1562,7 +1562,7 @@
                     "en": "Group 13 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure."
+                    "en": "Basic Set is sent non-secure\nParameter: 35 (bit 2)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1573,7 +1573,7 @@
                     "en": "Group 14 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure."
+                    "en": "Binary Switch Set is sent non-secure\nParameter: 35 (bit 3)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1584,7 +1584,7 @@
                     "en": "Group 15 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure."
+                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 35 (bit 4)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1595,7 +1595,7 @@
                     "en": "Group 16 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure."
+                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 35 (bit 5)\nDefault: unchecked (commands sent secure)"
                   }
                 }
               ]
@@ -1621,7 +1621,7 @@
                 "en": "LED mode"
               },
               "hint": {
-                "en": "Configuration of the LED status indication."
+                "en": "Configure the LED status indication for LED 4\nParameter: 6"
               },
               "values": [
                 {
@@ -1696,7 +1696,7 @@
                 "en": "LED ON brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned on."
+                "en": "Configure the percentage of light in the LED, when the LED is turned ON.\nParameter: 10\nRange: 0 - 99\nDefault: 50 %"
               }
             },
             {
@@ -1715,7 +1715,7 @@
                 "en": "LED OFF brightness level"
               },
               "hint": {
-                "en": "Configure the percentage of light in the LED, when the LED is turned \"off\"."
+                "en": "Configure the percentage of light in the LED, when the LED is turned OFF.\nParameter: 14\nRange: 0 - 99\nDefault: 0 %"
               }
             },
             {
@@ -1735,7 +1735,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\n0: Detection disabled. This is not recommended.\n 1 - 255: Long-press detection time in 0.01 seconds, 50 equals 0.5 seconds. (Default value is 50)"
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1752,7 +1752,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 21 will be switched between the configured upper and lower switch values. (Default)"
+                    "en": "When single pressing the button, nodes associated to group 21 will be switched between the configured upper and lower switch values.\nParameter: 22 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1767,7 +1767,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 22 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
                   }
                 },
                 {
@@ -1782,7 +1782,7 @@
                     "en": "lower switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21. (Default = 255)"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 22 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
                   }
                 }
               ]
@@ -1799,13 +1799,13 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups."
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: enabled"
               }
             },
             {
               "type": "group",
               "label": {
-                "en": "Non-secure commands"
+                "en": "Non-secure commands (FW > 2.0)"
               },
               "children": [
                 {
@@ -1816,7 +1816,7 @@
                     "en": "Group 17 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure"
+                    "en": "Basic Report is sent non-secure\nParameter: 36 (bit 1)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1827,7 +1827,7 @@
                     "en": "Group 18 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure."
+                    "en": "Basic Set is sent non-secure\nParameter: 36 (bit 2)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1838,7 +1838,7 @@
                     "en": "Group 19 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure."
+                    "en": "Binary Switch Set is sent non-secure\nParameter: 36 (bit 3)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1849,7 +1849,7 @@
                     "en": "Group 20 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure."
+                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 36 (bit 4)\nDefault: unchecked (commands sent secure)"
                   }
                 },
                 {
@@ -1860,7 +1860,7 @@
                     "en": "Group 21 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure."
+                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 36 (bit 5)\nDefault: unchecked (commands sent secure)"
                   }
                 }
               ]
