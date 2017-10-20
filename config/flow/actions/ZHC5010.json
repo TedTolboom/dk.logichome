@@ -12,7 +12,7 @@
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=ZHC5010"
-      },
+			},
 			{
 				"name": "led",
 				"type": "dropdown",
@@ -22,27 +22,27 @@
 						"label": {
 							"en": "Button 1"
 						}
-          },
+					},
 					{
 						"id": "BUTTON2_INDICATION",
 						"label": {
 							"en": "Button 2"
 						}
-          },
+					},
 					{
 						"id": "BUTTON3_INDICATION",
 						"label": {
 							"en": "Button 3"
 						}
-          },
+					},
 					{
 						"id": "BUTTON4_INDICATION",
 						"label": {
 							"en": "Button 4"
 						}
-          }
-        ]
-      },
+					}
+				]
+			},
 			{
 				"name": "level",
 				"type": "range",
@@ -51,9 +51,9 @@
 				"step": 0.01,
 				"label": "%",
 				"labelMultiplier": 100
-      }
-    ]
-  },
+			}
+		]
+	},
 	{
 		"id": "ZHC5010_set_led_flash",
 		"title": {
@@ -67,7 +67,7 @@
 				"name": "device",
 				"type": "device",
 				"filter": "driver_id=ZHC5010"
-      },
+			},
 			{
 				"name": "led",
 				"type": "dropdown",
@@ -77,27 +77,27 @@
 						"label": {
 							"en": "Button 1"
 						}
-          },
+					},
 					{
 						"id": "BUTTON2_INDICATION",
 						"label": {
 							"en": "Button 2"
 						}
-          },
+					},
 					{
 						"id": "BUTTON3_INDICATION",
 						"label": {
 							"en": "Button 3"
 						}
-          },
+					},
 					{
 						"id": "BUTTON4_INDICATION",
 						"label": {
 							"en": "Button 4"
 						}
-          }
-        ]
-      },
+					}
+				]
+			},
 			{
 				"name": "level",
 				"type": "range",
@@ -106,7 +106,7 @@
 				"step": 0.01,
 				"label": "%",
 				"labelMultiplier": 100
-      },
+			},
 			{
 				"name": "on_off_period",
 				"type": "number",
@@ -116,7 +116,7 @@
 				"placeholder": {
 					"en": "On/Off period (seconds)"
 				}
-      },
+			},
 			{
 				"name": "on_off_cycles",
 				"type": "number",
@@ -126,9 +126,9 @@
 				"placeholder": {
 					"en": "On/Off cycles"
 				}
-      }
-    ]
-  },
+			}
+		]
+	},
 	{
 		"id": "ZHC5010_stop_led_flash",
 		"title": {

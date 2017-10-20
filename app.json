@@ -90,7 +90,7 @@
           "en": "Scene is activated"
         },
         "hint": {
-          "en": "This card will trigger on a specific button and scene combination pressed ."
+          "en": "This card will trigger on a specific button and scene combination pressed."
         },
         "args": [
           {
@@ -338,6 +338,54 @@
           }
         ]
       }
+    ],
+    "conditions": [
+      {
+        "id": "ZHC5010_keyheld",
+        "title": {
+          "en": "Button !{{is held|is released}}"
+        },
+        "hint": {
+          "en": "Check on the condition if the button is held or is released"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=ZHC5010"
+          },
+          {
+            "name": "button",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Button 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Button 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Button 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Button 4"
+                }
+              }
+            ]
+          }
+        ]
+      }
     ]
   },
   "drivers": [
@@ -367,13 +415,13 @@
         "learnmode.": {
           "image": "drivers/ZHC5010/assets/icon.svg",
           "instruction": {
-            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXCACTLY 3 times to activate inclusion mode in the device."
+            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate inclusion mode in the device."
           }
         },
         "unlearnmode.": {
           "image": "/drivers/ZHC5010/assets/icon.svg",
           "instruction": {
-            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXCACTLY 3 times to activate exclusion mode in the device."
+            "en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate exclusion mode in the device."
           }
         },
         "associationGroups": [
@@ -395,7 +443,7 @@
           },
           "2": {
             "hint": {
-              "en": "Send Basic Report (On/Off) when button #1 is used."
+              "en": "Sends Basic Report (On/Off) when button #1 is used."
             }
           },
           "3": {
@@ -410,7 +458,7 @@
           },
           "5": {
             "hint": {
-              "en": "Send Binary Toggle Switch Set when button #1 is used."
+              "en": "Sends Binary Toggle Switch Set when button #1 is used."
             }
           },
           "6": {
@@ -420,7 +468,7 @@
           },
           "7": {
             "hint": {
-              "en": "Send Basic Report (On/Off) when button #2 is used."
+              "en": "Sends Basic Report (On/Off) when button #2 is used."
             }
           },
           "8": {
@@ -435,7 +483,7 @@
           },
           "10": {
             "hint": {
-              "en": "Send Binary Toggle Switch Set when button #2 is used."
+              "en": "Sends Binary Toggle Switch Set when button #2 is used."
             }
           },
           "11": {
@@ -445,7 +493,7 @@
           },
           "12": {
             "hint": {
-              "en": "Send Basic Report (On/Off) when button #3 is used."
+              "en": "Sends Basic Report (On/Off) when button #3 is used."
             }
           },
           "13": {
@@ -460,7 +508,7 @@
           },
           "15": {
             "hint": {
-              "en": "Send Binary Toggle Switch Set when button #3 is used."
+              "en": "Sends Binary Toggle Switch Set when button #3 is used."
             }
           },
           "16": {
@@ -470,7 +518,7 @@
           },
           "17": {
             "hint": {
-              "en": "Send Basic Report (On/Off) when button #4 is used."
+              "en": "Sends Basic Report (On/Off) when button #4 is used."
             }
           },
           "18": {
@@ -485,7 +533,7 @@
           },
           "20": {
             "hint": {
-              "en": "Send Binary Toggle Switch Set when button #4 is used."
+              "en": "Sends Binary Toggle Switch Set when button #4 is used."
             }
           },
           "21": {
@@ -582,7 +630,7 @@
             {
               "id": "0",
               "label": {
-                "en": "Separate mode (toggle mode). (Default)"
+                "en": "Separate mode (toggle mode) (Default)"
               }
             },
             {
@@ -611,13 +659,13 @@
             {
               "id": "0",
               "label": {
-                "en": "Separate mode (toggle mode). (Default)"
+                "en": "Separate mode (toggle mode) (Default)"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "In pair mode; left side is on/up, right side is off/down"
+                "en": "In pair mode: left side is on/up, right side is off/down"
               }
             }
           ]
@@ -634,91 +682,91 @@
             "en": "Relay mode"
           },
           "hint": {
-            "en": "Define which of the buttons controls the built-in relay, or if the relay only will be activated for one second, each time button #1 is used.\nParameter: 15"
+            "en": "Define which of the buttons controls the built-in relay, or if the relay only will be activated for 0.5 seconds, each time button #1 is used.\nParameter: 15"
           },
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "Relay is disabled"
+                "en": "Disabled"
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Relay is controlled by button #1 or by upper paddle in pair mode. (Default)"
+                "en": "Controlled by button #1 or by upper paddle in pair mode. (Default)"
               }
             },
             {
               "id": "2",
               "label": {
-                "en": "Relay is controlled by button #2 or by upper paddle in pair mode."
+                "en": "Controlled by button #2 or by upper paddle in pair mode."
               }
             },
             {
               "id": "3",
               "label": {
-                "en": "Relay is controlled by button #3 or by lower paddle in pair mode."
+                "en": " Controlled by button #3 or by lower paddle in pair mode."
               }
             },
             {
               "id": "4",
               "label": {
-                "en": "Relay is controlled by button #4 or by lower paddle in pair mode."
+                "en": "Controlled by button #4 or by lower paddle in pair mode."
               }
             },
             {
               "id": "5",
               "label": {
-                "en": "Relay is activated for half a second and is controlled by button #1 or by upper paddle in pair mode."
+                "en": "Activated for 0.5 seconds, controlled by button #1 (or by upper paddle in pair mode)."
               }
             },
             {
               "id": "6",
               "label": {
-                "en": "Relay is activated for half a second and is controlled by button #2 or by upper paddle in pair mode."
+                "en": "Activated for 0.5 seconds, controlled by button #2 (or by upper paddle in pair mode)."
               }
             },
             {
               "id": "7",
               "label": {
-                "en": "Relay is activated for half a second and is controlled by button #3 or by lower paddle in pair mode."
+                "en": "Activated for 0.5 seconds, controlled by button #3 (or by lower paddle in pair mode)."
               }
             },
             {
               "id": "8",
               "label": {
-                "en": "Relay is activated for half a second and is controlled by button #4 or by lower paddle in pair mode."
+                "en": "Activated for 0.5 seconds, controlled by button #4 (or by lower paddle in pair mode)."
               }
             },
             {
               "id": "9",
               "label": {
-                "en": "Relay follows the state of button #1; button down => relay is on, button released => relay is off"
+                "en": "Follows the state of button #1; button pressed => relay is on, button released => relay is off."
               }
             },
             {
               "id": "10",
               "label": {
-                "en": "Relay follows the state of button #2; button down => relay is on, button released => relay is off"
+                "en": "Follows the state of button #2; button pressed => relay is on, button released => relay is off."
               }
             },
             {
               "id": "11",
               "label": {
-                "en": "Relay follows the state of button #3; button down => relay is on, button released => relay is off"
+                "en": "Follows the state of button #3; button pressed => relay is on, button released => relay is off."
               }
             },
             {
               "id": "12",
               "label": {
-                "en": "Relay follows the state of button #4; button down => relay is on, button released => relay is off"
+                "en": "Follows the state of button #4; button pressed => relay is on, button released => relay is off."
               }
             },
             {
               "id": "13",
               "label": {
-                "en": "Relay is only controlled by commands sent to the root device"
+                "en": "Only controlled by commands sent to the root device."
               }
             }
           ]
@@ -735,19 +783,19 @@
             "en": "Indicator mode"
           },
           "hint": {
-            "en": "When ZHC5010 receives an Indicator Set message, then the received value can be used only to set the current light level for the actual LED or the level value can be stored and will then be used for subsequent internal LED activations.\nParameter: 16"
+            "en": "When ZHC5010 receives an Indicator Set message, the received value can be used as:\n 1) Temporary: The current light level for the actual LED will be set, but not stored (the next time the LED is activated the light level will be as set in \"LED ON brightness level\" (parameters 7-10) or\n2) The \"LED ON brightness level\" for the actual LED (parameters 7-10) will be updated to the received value thereby changing the light level for the actual LED for subsequent internal LED activations.\nParameter: 16"
           },
           "values": [
             {
               "id": "0",
               "label": {
-                "en": "Indicator Set level values are only used to control the LED"
+                "en": "Indicator Set level values are only used to control the LED (value not stored)."
               }
             },
             {
               "id": "1",
               "label": {
-                "en": "Indicator Set level values are also used by internal LED activations. (Default)"
+                "en": "Indicator Set level values are also used by internal LED activations (value stored). (Default)"
               }
             }
           ]
@@ -784,7 +832,7 @@
             "en": "Disable House Cleaning Mode"
           },
           "hint": {
-            "en": "Enable or disable the \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100%\nParameter: 18\nDefault: Enabled (unchecked)"
+            "en": "Enable or disable the \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100% by pressing a button twice to associated devices.\nIf buttons are in \"pair mode\" (parameters 1 and 2) \"House Cleaning Mode\" will only be activated by clicking the left button twice.\nParameter: 18\nDefault: Enabled (unchecked)"
           }
         },
         {
@@ -804,7 +852,7 @@
             "en": "Long-press threshold"
           },
           "hint": {
-            "en": "Determine the time interval for which a button press is detected as long-pressed.\nParameter: 28\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 50, equals 0.5 seconds.\n0: Detection disabled. This is not recommended."
+            "en": "Determine the time interval for which a button needs to be held in to send a \"long-pressed command\".\nParameter: 28\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 50 (= 0.5 seconds).\n0: Detection disabled. This is not recommended."
           }
         },
         {
@@ -832,55 +880,55 @@
                 {
                   "id": "0",
                   "label": {
-                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
                   }
                 },
                 {
                   "id": "1",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button (Default)"
+                    "en": "LED indicates status of corresponding button. (Default)"
                   }
                 },
                 {
                   "id": "2",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button, with inverted indication"
+                    "en": "LED indicates inverse status corresponding button."
                   }
                 },
                 {
                   "id": "3",
                   "label": {
-                    "en": "LED indicates the status of corresponding paddle (in pair mode)"
+                    "en": "LED indicates status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "4",
                   "label": {
-                    "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+                    "en": "LED indicates inverse status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "5",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay"
+                    "en": "LED indicates the status of the built-in relay."
                   }
                 },
                 {
                   "id": "6",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay, with inverted indication"
+                    "en": "LED indicates inverse status of built-in relay."
                   }
                 },
                 {
                   "id": "7",
                   "label": {
-                    "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+                    "en": "LED show a 5 seconds indication when the corresponding button is pressed."
                   }
                 },
                 {
                   "id": "8",
                   "label": {
-                    "en": "LED indication is disabled, it is only controlled by Command Class Basic Set commands."
+                    "en": "LED indication is ONLY controlled by Command Class Basic Set commands."
                   }
                 }
               ]
@@ -940,7 +988,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 29\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 29\nRange: 1 - 255: Detection time in 0.01 seconds.\nDefault: 30 (= 0.3 seconds).\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -957,7 +1005,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values.\nParameter: 19 (byte 1)\nDefault: enabled"
+                    "en": "When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 19 (byte 1)\nDefault: enabled."
                   }
                 },
                 {
@@ -972,7 +1020,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
                   }
                 },
                 {
@@ -984,10 +1032,10 @@
                     "max": 99
                   },
                   "label": {
-                    "en": "lower switch value"
+                    "en": "Lower switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 19 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 % (OFF)"
                   }
                 }
               ]
@@ -1004,7 +1052,7 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 23\nDefault: enabled"
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 23\nDefault: Enabled."
               }
             },
             {
@@ -1021,7 +1069,7 @@
                     "en": "Group 2 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure\nParameter: 33 (bit 1)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Report is sent non-secure.\nParameter: 33 (bit 1)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1032,7 +1080,7 @@
                     "en": "Group 3 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure\nParameter: 33 (bit 2)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Set is sent non-secure.\nParameter: 33 (bit 2)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1043,7 +1091,7 @@
                     "en": "Group 4 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure\nParameter: 33 (bit 3)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Switch Set is sent non-secure.\nParameter: 33 (bit 3)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1054,7 +1102,7 @@
                     "en": "Group 5 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 33 (bit 4)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 33 (bit 4)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1065,7 +1113,7 @@
                     "en": "Group 6 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 33 (bit 5)\nDefault: unchecked (commands sent secure)"
+                    "en": "Multilevel Switch commands are sent non-secure.\nParameter: 33 (bit 5)\nDefault: Unchecked (commands sent secure)."
                   }
                 }
               ]
@@ -1097,55 +1145,55 @@
                 {
                   "id": "0",
                   "label": {
-                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
                   }
                 },
                 {
                   "id": "1",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button (Default)"
+                    "en": "LED indicates the status of the corresponding button. (Default)"
                   }
                 },
                 {
                   "id": "2",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button, with inverted indication"
+                    "en": "LED indicates inverse status of corresponding button."
                   }
                 },
                 {
                   "id": "3",
                   "label": {
-                    "en": "LED indicates the status of corresponding paddle (in pair mode)"
+                    "en": "LED indicates the status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "4",
                   "label": {
-                    "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+                    "en": "LED indicates inverse status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "5",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay"
+                    "en": "LED indicates the status of the built-in relay."
                   }
                 },
                 {
                   "id": "6",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay, with inverted indication"
+                    "en": "LED indicates inverse status of the built-in relay."
                   }
                 },
                 {
                   "id": "7",
                   "label": {
-                    "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+                    "en": "LED show a 5 seconds indication when the corresponding button is pressed."
                   }
                 },
                 {
                   "id": "8",
                   "label": {
-                    "en": "LED indication is disabled, it is only controlled by Command Class Basic Set commands."
+                    "en": "LED indication is ONLY controlled by Command Class Basic Set commands."
                   }
                 }
               ]
@@ -1205,7 +1253,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30 (= 0.3 seconds).\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1222,7 +1270,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 11 will be switched between the configured upper and lower switch values.\nParameter: 20 (byte 1)\nDefault: enabled"
+                    "en": "When single pressing the button, nodes associated to group 11 will be switched between the configured upper and lower switch values.nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 20 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1237,7 +1285,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 20 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 20 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\n: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
                   }
                 },
                 {
@@ -1249,7 +1297,7 @@
                     "max": 99
                   },
                   "label": {
-                    "en": "lower switch value"
+                    "en": "Lower switch value"
                   },
                   "hint": {
                     "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 20 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
@@ -1269,7 +1317,7 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 24\nDefault: enabled"
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 24\nDefault: Enabled."
               }
             },
             {
@@ -1286,7 +1334,7 @@
                     "en": "Group 7 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure\nParameter: 34 (bit 1)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Report is sent non-secure.\nParameter: 34 (bit 1)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1297,7 +1345,7 @@
                     "en": "Group 8 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure\nParameter: 34 (bit 2)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Set is sent non-secure.\nParameter: 34 (bit 2)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1308,7 +1356,7 @@
                     "en": "Group 9 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure\nParameter: 34 (bit 3)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Switch Set is sent non-secure.\nParameter: 34 (bit 3)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1319,7 +1367,7 @@
                     "en": "Group 10 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 34 (bit 4)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 34 (bit 4)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1330,7 +1378,7 @@
                     "en": "Group 11 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 34 (bit 5)\nDefault: unchecked (commands sent secure)"
+                    "en": "Multilevel Switch commands are sent non-secure.\nParameter: 34 (bit 5)\nDefault: Unchecked (commands sent secure)."
                   }
                 }
               ]
@@ -1362,55 +1410,55 @@
                 {
                   "id": "0",
                   "label": {
-                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
                   }
                 },
                 {
                   "id": "1",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button (Default)"
+                    "en": "LED indicates status of corresponding button. (Default)"
                   }
                 },
                 {
                   "id": "2",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button, with inverted indication"
+                    "en": "LED indicates inverse status of corresponding button."
                   }
                 },
                 {
                   "id": "3",
                   "label": {
-                    "en": "LED indicates the status of corresponding paddle (in pair mode)"
+                    "en": "LED indicates the status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "4",
                   "label": {
-                    "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+                    "en": "LED indicates inverse status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "5",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay"
+                    "en": "LED indicates the status of the built-in relay."
                   }
                 },
                 {
                   "id": "6",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay, with inverted indication"
+                    "en": "LED indicates inverse status of the built-in relay."
                   }
                 },
                 {
                   "id": "7",
                   "label": {
-                    "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+                    "en": "LED show a 5 seconds indication when the corresponding button is pressed."
                   }
                 },
                 {
                   "id": "8",
                   "label": {
-                    "en": "LED indication is disabled, it is only controlled by Command Class Basic Set commands."
+                    "en": "LED indication is ONLY controlled by Command Class Basic Set commands."
                   }
                 }
               ]
@@ -1470,7 +1518,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 31\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 31\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30 (= 0.3 seconds).\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1487,7 +1535,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 16 will be switched between the configured upper and lower switch values.\nParameter: 21 (byte 1)\nDefault: enabled"
+                    "en": "When single pressing the button, nodes associated to group 16 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 21 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1502,7 +1550,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 21 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 21 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nIf the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
                   }
                 },
                 {
@@ -1514,7 +1562,7 @@
                     "max": 99
                   },
                   "label": {
-                    "en": "lower switch value"
+                    "en": "Lower switch value"
                   },
                   "hint": {
                     "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 21 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
@@ -1534,7 +1582,7 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: enabled"
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: Enabled."
               }
             },
             {
@@ -1551,7 +1599,7 @@
                     "en": "Group 12 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure\nParameter: 35 (bit 1)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Report is sent non-secure.\nParameter: 35 (bit 1)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1562,7 +1610,7 @@
                     "en": "Group 13 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure\nParameter: 35 (bit 2)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Set is sent non-secure.\nParameter: 35 (bit 2)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1573,7 +1621,7 @@
                     "en": "Group 14 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure\nParameter: 35 (bit 3)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Switch Set is sent non-secure.\nParameter: 35 (bit 3)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1584,7 +1632,7 @@
                     "en": "Group 15 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 35 (bit 4)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 35 (bit 4)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1595,7 +1643,7 @@
                     "en": "Group 16 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 35 (bit 5)\nDefault: unchecked (commands sent secure)"
+                    "en": "Multilevel Switch commands are sent non-secure.\nParameter: 35 (bit 5)\nDefault: Unchecked (commands sent secure)."
                   }
                 }
               ]
@@ -1627,55 +1675,55 @@
                 {
                   "id": "0",
                   "label": {
-                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)"
+                    "en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
                   }
                 },
                 {
                   "id": "1",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button (Default)"
+                    "en": "LED indicates status of corresponding button. (Default)"
                   }
                 },
                 {
                   "id": "2",
                   "label": {
-                    "en": "LED indicates the status of the corresponding button, with inverted indication"
+                    "en": "LED indicates inverse status of corresponding button."
                   }
                 },
                 {
                   "id": "3",
                   "label": {
-                    "en": "LED indicates the status of corresponding paddle (in pair mode)"
+                    "en": "LED indicates the status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "4",
                   "label": {
-                    "en": "LED indicates the status of the corresponding paddle (in pair mode), with inverted indication"
+                    "en": "LED indicates inverse status of corresponding paddle (in pair mode)."
                   }
                 },
                 {
                   "id": "5",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay"
+                    "en": "LED indicates the status of the built-in relay."
                   }
                 },
                 {
                   "id": "6",
                   "label": {
-                    "en": "LED indicates the status of the built-in relay, with inverted indication"
+                    "en": "LED indicates inverse status of built-in relay."
                   }
                 },
                 {
                   "id": "7",
                   "label": {
-                    "en": "LED show a 5 seconds indication when the corresponding button is pressed"
+                    "en": "LED show a 5 seconds indication when the corresponding button is pressed."
                   }
                 },
                 {
                   "id": "8",
                   "label": {
-                    "en": "LED indication is disabled, it is only controlled by Command Class Basic Set commands."
+                    "en": "LED indication is ONLY controlled by Command Class Basic Set commands."
                   }
                 }
               ]
@@ -1735,7 +1783,7 @@
                 "en": "Button key press threshold"
               },
               "hint": {
-                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30, equals 0.3 seconds.\n0: Detection disabled. This is not recommended."
+                "en": "Specifies the detection time for single-press, double-press, etc. for button 1.\nParameter: 30\nRange: 1 - 255: Detection time in 0.01 seconds\nDefault: 30 (= 0.3 seconds).\n0: Detection disabled. This is not recommended."
               }
             },
             {
@@ -1752,7 +1800,7 @@
                     "en": "Enable switch"
                   },
                   "hint": {
-                    "en": "When single pressing the button, nodes associated to group 21 will be switched between the configured upper and lower switch values.\nParameter: 22 (byte 1)\nDefault: enabled"
+                    "en": "When single pressing the button, nodes associated to group 21 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 22 (byte 1)\nDefault: enabled"
                   }
                 },
                 {
@@ -1767,7 +1815,7 @@
                     "en": "Upper switch value"
                   },
                   "hint": {
-                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 22 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 99 %"
+                    "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 22 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nIf the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
                   }
                 },
                 {
@@ -1779,7 +1827,7 @@
                     "max": 99
                   },
                   "label": {
-                    "en": "lower switch value"
+                    "en": "Lower switch value"
                   },
                   "hint": {
                     "en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 22 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
@@ -1799,7 +1847,7 @@
                 "en": "Switch groups when command received"
               },
               "hint": {
-                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: enabled"
+                "en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 25\nDefault: Enabled."
               }
             },
             {
@@ -1816,7 +1864,7 @@
                     "en": "Group 17 (Basic Report)"
                   },
                   "hint": {
-                    "en": "Basic Report is sent non-secure\nParameter: 36 (bit 1)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Report is sent non-secure.\nParameter: 36 (bit 1)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1827,7 +1875,7 @@
                     "en": "Group 18 (Basic Set)"
                   },
                   "hint": {
-                    "en": "Basic Set is sent non-secure\nParameter: 36 (bit 2)\nDefault: unchecked (commands sent secure)"
+                    "en": "Basic Set is sent non-secure.\nParameter: 36 (bit 2)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1838,7 +1886,7 @@
                     "en": "Group 19 (Binary Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Switch Set is sent non-secure\nParameter: 36 (bit 3)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Switch Set is sent non-secure.\nParameter: 36 (bit 3)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1849,7 +1897,7 @@
                     "en": "Group 20 (Binary Toggle Switch Set)"
                   },
                   "hint": {
-                    "en": "Binary Toggle Switch Set is sent non-secure\nParameter: 36 (bit 4)\nDefault: unchecked (commands sent secure)"
+                    "en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 36 (bit 4)\nDefault: Unchecked (commands sent secure)."
                   }
                 },
                 {
@@ -1860,7 +1908,7 @@
                     "en": "Group 21 (Multilevel Switch)"
                   },
                   "hint": {
-                    "en": "Multilevel Switch commands are sent non-secure\nParameter: 36 (bit 5)\nDefault: unchecked (commands sent secure)"
+                    "en": "Multilevel Switch commands are sent non-secure.\nParameter: 36 (bit 5)\nDefault: Unchecked (commands sent secure)."
                   }
                 }
               ]
