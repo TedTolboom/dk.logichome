@@ -33,9 +33,9 @@ class ZHC5010 extends ZwaveDevice {
 					'Value': (value) ? 255 : 0,
 				}),
 				report: 'BASIC_REPORT',
-				reportParserV1: (report, this.node) => {
+				reportParserV1: (report) => {
 					if (report && report.hasOwnProperty('Value')) {
-						this.log('reported node:', node);
+						this.log('reported node:', this);
 						return report.Value === 255;
 					}
 					return null;
@@ -69,7 +69,6 @@ class ZHC5010 extends ZwaveDevice {
 
 		//===== SCENE ACTIVATION
 		this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', (rawReport, parsedReport) => {
-
 			if (rawReport &&
 				rawReport.hasOwnProperty('Properties1') &&
 				rawReport.Properties1.hasOwnProperty('Key Attributes') &&
@@ -107,6 +106,15 @@ class ZHC5010 extends ZwaveDevice {
 		let triggerZHC_button = new Homey.FlowCardTriggerDevice('ZHC_button');
 		triggerZHC_button
 			.register();
+
+		// define and register FlowCardTriggers
+		let conditionZHC5010_keyheld = new Homey.FlowCardCondition('ZHC5010_keyheld');
+		conditionZHC5010_keyheld
+			.register()
+			.registerRunListener((args, state) => {
+				this.log(args.device.getState(args.device));
+				// return Promise.resolve(args.button === state.button && args.scene === state.scene);
+			});
 
 		//===== CONTROL LED's flow card actions
 		// define FlowCardAction to set the LED indicator LED level
