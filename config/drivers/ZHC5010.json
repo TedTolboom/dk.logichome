@@ -3,9 +3,11 @@
 	"name": {
 		"en": "ZHC5010 - Relay"
 	},
-	"class": "light",
+	"class": "socket",
 	"capabilities": [
-		"onoff"
+		"onoff",
+		"configuration_custom_capability",
+		"scene_notification_custom_capability"
 	],
 	"capabilitiesOptions": {
 		"onoff": {
@@ -34,7 +36,9 @@
 			}
 		},
 		"associationGroups": [
-			1,
+			1
+		],
+		"associationGroupsMultiChannel": [
 			2,
 			6,
 			7,
@@ -153,7 +157,7 @@
 		},
 		"multiChannelNodes": {
 			"1": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff",
 					"dim"
@@ -164,7 +168,7 @@
 				}
 			},
 			"2": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff",
 					"dim"
@@ -175,7 +179,7 @@
 				}
 			},
 			"3": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff",
 					"dim"
@@ -186,7 +190,7 @@
 				}
 			},
 			"4": {
-				"class": "light",
+				"class": "socket",
 				"capabilities": [
 					"onoff",
 					"dim"

@@ -11,7 +11,7 @@
 			{
 				"name": "device",
 				"type": "device",
-				"filter": "driver_id=ZHC5010"
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
 			},
 			{
 				"name": "led",
@@ -66,7 +66,7 @@
 			{
 				"name": "device",
 				"type": "device",
-				"filter": "driver_id=ZHC5010"
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
 			},
 			{
 				"name": "led",
@@ -141,7 +141,7 @@
 			{
 				"name": "device",
 				"type": "device",
-				"filter": "driver_id=ZHC5010"
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
 			},
 			{
 				"name": "led",
