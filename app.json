@@ -5,7 +5,7 @@
     "en": "Logic Home Control"
   },
   "version": "2.0.0",
-  "compatibility": ">=1.5.0",
+  "compatibility": ">=1.5.5",
   "author": {
     "name": "Ted Tolboom",
     "email": "dTNL.Homey@gmail.com"
@@ -43,7 +43,30 @@
     "large": "/assets/images/large.png",
     "small": "/assets/images/small.png"
   },
-  "capabilities": {},
+  "capabilities": {
+    "configuration_custom_capability": {
+      "type": "boolean",
+      "title": {
+        "en": "Configuration capability"
+      },
+      "getable": false,
+      "setable": false
+    },
+    "scene_notification_custom_capability": {
+      "type": "number",
+      "title": {
+        "en": "Scene Notification capability"
+      },
+      "getable": false,
+      "setable": false,
+      "units": {
+        "en": "button"
+      },
+      "min": 0,
+      "max": 4,
+      "step": 1
+    }
+  },
   "flow": {
     "triggers": [
       {
@@ -60,7 +83,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=scene_notification_custom_capability"
           }
         ],
         "tokens": [
@@ -96,7 +119,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=scene_notification_custom_capability"
           },
           {
             "name": "button",
@@ -174,7 +197,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
           },
           {
             "name": "led",
@@ -229,7 +252,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
           },
           {
             "name": "led",
@@ -304,7 +327,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
           },
           {
             "name": "led",
@@ -352,7 +375,7 @@
           {
             "name": "device",
             "type": "device",
-            "filter": "driver_id=ZHC5010"
+            "filter": "driver_id=ZHC5010&capabilities=scene_notification_custom_capability"
           },
           {
             "name": "button",
@@ -394,9 +417,11 @@
       "name": {
         "en": "ZHC5010 - Relay"
       },
-      "class": "light",
+      "class": "socket",
       "capabilities": [
-        "onoff"
+        "onoff",
+        "configuration_custom_capability",
+        "scene_notification_custom_capability"
       ],
       "capabilitiesOptions": {
         "onoff": {
@@ -425,7 +450,9 @@
           }
         },
         "associationGroups": [
-          1,
+          1
+        ],
+        "associationGroupsMultiChannel": [
           2,
           6,
           7,
@@ -544,7 +571,7 @@
         },
         "multiChannelNodes": {
           "1": {
-            "class": "light",
+            "class": "socket",
             "capabilities": [
               "onoff",
               "dim"
@@ -555,7 +582,7 @@
             }
           },
           "2": {
-            "class": "light",
+            "class": "socket",
             "capabilities": [
               "onoff",
               "dim"
@@ -566,7 +593,7 @@
             }
           },
           "3": {
-            "class": "light",
+            "class": "socket",
             "capabilities": [
               "onoff",
               "dim"
@@ -577,7 +604,7 @@
             }
           },
           "4": {
-            "class": "light",
+            "class": "socket",
             "capabilities": [
               "onoff",
               "dim"

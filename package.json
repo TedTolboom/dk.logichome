@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"dependencies": {
 		"homey-log": "^1.0.5",
-		"homey-meshdriver": "^1.2.4",
+		"homey-meshdriver": "^1.2.5",
 		"homey-zwavedriver": "git+https://github.com/athombv/node-homey-zwavedriver.git"
 	},
 	"devDependencies": {},
