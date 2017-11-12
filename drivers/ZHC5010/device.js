@@ -5,15 +5,20 @@ const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 
 class ZHC5010 extends ZwaveDevice {
 	onMeshInit() {
-		let PreviousSequenceNo = null;
-		const dimmingDuration = 255 // 'Instantly'; // 'Default'// Factory Default
 
+		let PreviousSequenceNo = null;
+
+		/*
 		process.on('unhandledRejection', error => {
 			console.error(error.stack);
 		})
+		*/
 
 		// enable debugging
 		this.enableDebug();
+
+		// let devices = this.getDriver().getDevices()
+		// console.log(devices);
 
 		// print the node's info to the console
 		this.printNode();
@@ -24,39 +29,14 @@ class ZHC5010 extends ZwaveDevice {
 		this.registerCapability('onoff', 'BASIC', {
 				getOpts: {
 					getOnStart: true, // get the initial value on app start
-					// getOnWakeUp: true, // only useful for battery devices
 				},
-				/*
-				get: 'BASIC_GET',
-				set: 'BASIC_SET',
-				setParserV1: value => ({
-					'Value': (value) ? 255 : 0,
-				}),
-				report: 'BASIC_REPORT',
-				reportParserV1: (report) => {
-					if (report && report.hasOwnProperty('Value')) {
-						this.log('reported node:', this);
-						return report.Value === 255;
-					}
-					return null;
-				},
-				*/
 			}),
 
 			this.registerCapability('dim', 'SWITCH_MULTILEVEL', {
 				getOpts: {
 					getOnStart: true, // get the initial value on app start
 				},
-				get: 'SWITCH_MULTILEVEL_GET',
-				set: 'SWITCH_MULTILEVEL_SET',
-				setParserV4: value => {
-					this.log('setting dim level to: ', value * 99);
-					const setValue = {
-						Value: Math.round(value * 99),
-						'Dimming Duration': new Buffer([dimmingDuration]) // dimmingDuration,
-					}
-					return setValue
-				},
+				// required
 				report: 'SWITCH_MULTILEVEL_SET',
 				reportParserV4: report => {
 					if (report && report.hasOwnProperty('Value (Raw)')) {
@@ -66,6 +46,35 @@ class ZHC5010 extends ZwaveDevice {
 					return null;
 				},
 			});
+
+		//===== SCENE ACTIVATION
+
+		this.registerReportListener('BASIC', 'BASIC_REPORT', (rawReport, parsedReport) => {
+			this.log('rawReport', rawReport, parsedReport);
+			this.log('multiChannelNodeId', this.__data.multiChannelNodeId, 'relay_mode', this.getSetting('relay_mode'));
+			// this.log('multiChannelNodeId / token', this.__data.multiChannelNodeId, this.__data.token); //this.node.MultiChannelNodes[commandClass.multiChannelNodeId]
+
+			// const deviceID = 'c59ddcc5-be3c-469e-bc47-160dc3aa72c7';
+			// const mainNodeId = Object.keys(this._manager._nodes)[0];
+			// this.log('mainNodeId', mainNodeId);
+
+			// this.log('test', devices) //[mainNodeId].data)
+			// this.log('device', devices.getDevice(mainNodeId, true));
+			// const device = this.getDevice(mainNodeId, true);
+			//device.setCapabilityValue('onoff', rawReport.Value === 255);
+
+			// if (this.__data.multiChannelNodeId === this.getSetting('relay_mode')) {
+			// 	this.log('rawReport.value', rawReport.Value === 255);
+
+			//device.setCapabilityValue('onoff', rawReport.Value === 255);
+			// }
+			//this.log('nodes node', this.node.MultiChannelNodes);
+			//let nodeObjects = await this._manager._nodes;
+			//_.forEach(nodeObjects, nodeObject => {
+			//	this.log('nodeID:', nodeObject);
+			//});
+			// this.log('nodes _manager', this._manager._nodes);
+		})
 
 		//===== SCENE ACTIVATION
 		this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', (rawReport, parsedReport) => {
@@ -90,6 +99,14 @@ class ZHC5010 extends ZwaveDevice {
 					triggerZHC5010_scene.trigger(this, triggerZHC5010_scene.getArgumentValues, remoteValue);
 					// Trigger the trigger card with tokens
 					triggerZHC_button.trigger(this, remoteValue, null);
+
+					if (remoteValue.scene === 'Key Held Down' || remoteValue.scene === 'Key Held Down') {
+						let button_held = 0;
+						if (remoteValue.scene = 'Key Held Down') button_held = remoteValue.scene_number
+						this.log(remoteValue.scene, 'keyheld state updated to:', button_held, typeof (button_held))
+						// this.setCapabilityValue('scene_notification_custom_capability', button_held);
+						// conditionZHC5010_keyheld.trigger(this, conditionZHC5010_keyheld.getArgumentValues, button_held);
+					}
 				}
 			}
 		});
@@ -112,8 +129,8 @@ class ZHC5010 extends ZwaveDevice {
 		conditionZHC5010_keyheld
 			.register()
 			.registerRunListener((args, state) => {
-				this.log(args.device.getState(args.device));
-				// return Promise.resolve(args.button === state.button && args.scene === state.scene);
+				this.log(args, state, args.button === state.button);
+				return Promise.resolve(args.button === state.button);
 			});
 
 		//===== CONTROL LED's flow card actions
@@ -210,6 +227,8 @@ class ZHC5010 extends ZwaveDevice {
 	// Overwrite the onSettings method, and change the Promise result
 	// >> Containment (add callback to onSettings) to resolve callback issues with onSettings; see device.js.alternate
 	onSettings(oldSettings, newSettings, changedKeysArr, callback) {
+		this.log(changedKeysArr);
+
 		const changedKeys = [];
 		//check if one of the 4 button parameters has been changed
 		for (var i = 1; i <= 4; i++) {
@@ -228,9 +247,12 @@ class ZHC5010 extends ZwaveDevice {
 					oldValue,
 				};
 				this.log('Setting non-secure groups for button', i, 'to decimal value:', value);
-				changedKey.parsedValue = super._systemSettingParser(changedKey.value, changedKey);
-				changedKey.parsedOldValue = super._systemSettingParser(changedKey.oldValue, changedKey);
+				// changedKey.parsedValue = super._systemSettingParser(changedKey.value, changedKey);
+				// changedKey.parsedOldValue = super._systemSettingParser(changedKey.oldValue, changedKey);
 				changedKeys.push(changedKey);
+
+				// >> REMOVE 'but' + i + '_nonsec_bit' from changedKeysArr
+
 			};
 			// Multilevel Switch on single press for device i (4 byte patterns): but(i)_multilevel_byte(j)
 			if (changedKeysArr.join().includes('but' + i + '_multilevel_byte')) {
@@ -256,12 +278,23 @@ class ZHC5010 extends ZwaveDevice {
 				changedKey.parsedOldValue = changedKey.parsedValue.readUIntBE(0, 4);
 				this.log('Setting Multilevel Switch settings for button', i, 'to enabled:', arr[0] === 1, ', with switch values:', arr[1], '/', arr[2], '(upper/lower)');
 				changedKeys.push(changedKey);
+
+				// >> REMOVE 'but' + i + '_multilevel_byte from changedKeysArr
 			}
 		};
 
+		this.log('changedKeys', changedKeys);
+
 		// >> Containment code to resolve callback issues with onSettings; see device.js.alternate
 		Promise.all(
-				changedKeys.map(changedKey => this.ZHC_configuration_run_listener(this, changedKey))
+				changedKeys.map(async(changedKey) => {
+					this.log('changedKey: ', changedKey.id, changedKey.size, changedKey.value);
+					await this.configurationSet({
+						index: changedKey.id,
+						size: changedKey.size
+					}, changedKey.value)
+					// await this.ZHC_configuration_run_listener(this, changedKey)
+				})
 			)
 			.then(() => {
 				return super.onSettings(oldSettings, newSettings, changedKeysArr);
@@ -274,10 +307,18 @@ class ZHC5010 extends ZwaveDevice {
 			.catch(err => {
 				this.error('Device settings change rejected. Reverting!');
 				// Reverting settings to old setting object
-				changedKeys.forEach(changedKey => {
+
+				changedKeys.forEach(async(changedKey) => {
 					changedKey.value = changedKey.oldValue;
 					changedKey.parsedValue = changedKey.parsedOldValue;
-					this.ZHC_configuration_run_listener(this, changedKey)
+					// Or set configuration value that is not defined in manifest
+
+					await this.configurationSet({
+						index: changedKey.id,
+						size: changedKey.size
+					}, changedKey.value);
+
+					// await this.ZHC_configuration_run_listener(this, changedKey)
 				});
 
 				callback(err || new Error('settings_change_failed'));
@@ -285,26 +326,6 @@ class ZHC5010 extends ZwaveDevice {
 			});
 	}
 
-	// update Z-wave configuration parameters
-	ZHC_configuration_run_listener(args, changedKey) {
-		this._debug('Setting configuration parameter:', changedKey);
-		return new Promise((resolve, reject) => {
-			args.node.CommandClass.COMMAND_CLASS_CONFIGURATION.CONFIGURATION_SET({
-				'Parameter Number': changedKey.id,
-				Level: {
-					Size: changedKey.size,
-					Default: false,
-				},
-				'Configuration Value': changedKey.parsedValue, // in .size byte Buffer
-			}, (err, result) => {
-				if (err) {
-					reject(err);
-					return this._debug('CONFIGURATION_SET', err);
-				}
-				resolve();
-			});
-		})
-	}
 }
 
 module.exports = ZHC5010;
