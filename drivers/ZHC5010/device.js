@@ -17,15 +17,19 @@ class ZHC5010 extends ZwaveDevice {
 		// enable debugging
 		this.enableDebug();
 
-		// let devices = this.getDriver().getDevices()
-		// console.log(devices);
-
 		// print the node's info to the console
 		this.printNode();
 
+		if (!this.mainNodeDevice || this.mainNodeDevice.isDeleted) {
+			const mainNodeId = Object.keys(this._manager._nodes)[0]; //this.getData().token;
+			this.mainNodeDevice = Object.values(this.getDriver().__devices).find(device =>
+				device.getData().token === mainNodeId
+			)
+			if (mainNodeId == this.getData().token) this.log('mainNodeID registered as', mainNodeId)
+		}
+
 		//===== REGISTER CAPABILITIES
 		// register capabilities for this device
-		// OPEN WORK: add to reportParser a link to change the state of the relay if relay is controlled by one of the buttons (based on parameter 15)
 		this.registerCapability('onoff', 'BASIC', {
 				getOpts: {
 					getOnStart: true, // get the initial value on app start
@@ -40,40 +44,19 @@ class ZHC5010 extends ZwaveDevice {
 				report: 'SWITCH_MULTILEVEL_SET',
 				reportParserV4: report => {
 					if (report && report.hasOwnProperty('Value (Raw)')) {
-						if (report['Value (Raw)'][0] === 255) return 1; // OPEN WORK: go to last known dim-level; store as variable per end-point
+						if (report['Value (Raw)'][0] === 255) return 1;
 						return report['Value (Raw)'][0] / 99;
 					}
 					return null;
 				},
 			});
 
-		//===== SCENE ACTIVATION
-
+		//===== SYNCHRONISE RELAY BASED END DEVICE
 		this.registerReportListener('BASIC', 'BASIC_REPORT', (rawReport, parsedReport) => {
-			this.log('rawReport', rawReport, parsedReport);
-			this.log('multiChannelNodeId', this.__data.multiChannelNodeId, 'relay_mode', this.getSetting('relay_mode'));
-			// this.log('multiChannelNodeId / token', this.__data.multiChannelNodeId, this.__data.token); //this.node.MultiChannelNodes[commandClass.multiChannelNodeId]
-
-			// const deviceID = 'c59ddcc5-be3c-469e-bc47-160dc3aa72c7';
-			// const mainNodeId = Object.keys(this._manager._nodes)[0];
-			// this.log('mainNodeId', mainNodeId);
-
-			// this.log('test', devices) //[mainNodeId].data)
-			// this.log('device', devices.getDevice(mainNodeId, true));
-			// const device = this.getDevice(mainNodeId, true);
-			//device.setCapabilityValue('onoff', rawReport.Value === 255);
-
-			// if (this.__data.multiChannelNodeId === this.getSetting('relay_mode')) {
-			// 	this.log('rawReport.value', rawReport.Value === 255);
-
-			//device.setCapabilityValue('onoff', rawReport.Value === 255);
-			// }
-			//this.log('nodes node', this.node.MultiChannelNodes);
-			//let nodeObjects = await this._manager._nodes;
-			//_.forEach(nodeObjects, nodeObject => {
-			//	this.log('nodeID:', nodeObject);
-			//});
-			// this.log('nodes _manager', this._manager._nodes);
+			if (this.__data.multiChannelNodeId === this.mainNodeDevice.getSetting('relay_mode')) {
+				this.log('Setting the Relay switch to', rawReport.Value === 255, 'based on a state change of multiChannel ID', this.__data.multiChannelNodeId);
+				this.mainNodeDevice.setCapabilityValue('onoff', rawReport.Value === 255);
+			}
 		})
 
 		//===== SCENE ACTIVATION
@@ -221,6 +204,10 @@ class ZHC5010 extends ZwaveDevice {
 		actionZHC5010_stopLEDflash
 			.register()
 			.registerRunListener(ZHC5010_stopLEDflash_run_listener);
+	}
+
+	onDeleted() {
+		this.isDeleted = true;
 	}
 
 	//===== UPDATE PARAMETERS
