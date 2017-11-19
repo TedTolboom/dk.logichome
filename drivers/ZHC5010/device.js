@@ -41,6 +41,7 @@ class ZHC5010 extends ZwaveDevice {
 				report: 'SWITCH_MULTILEVEL_SET',
 				reportParserV4: report => {
 					if (report && report.hasOwnProperty('Value (Raw)')) {
+						if (this.hasCapability('onoff')) this.setCapabilityValue('onoff', report['Value (Raw)'][0] > 0);
 						if (report['Value (Raw)'][0] === 255) return 1;
 						return report['Value (Raw)'][0] / 99;
 					}
