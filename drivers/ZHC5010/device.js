@@ -210,7 +210,7 @@ class ZHC5010 extends ZwaveDevice {
 			//this.__state['onoff'] = args.set_dim_level_state > 0;
 			//this.__state['dim'] = args.set_dim_level_state;
 			//this.log(this.__state['onoff'], this.__state['dim']);
-			this.log('multiChannelNodeId', this.__data.multiChannelNodeId);
+			this.log('multiChannelNodeId', this.getData().multiChannelNodeId);
 			this.setCapabilityValue('dim', args.set_dim_level_state);
 		};
 
