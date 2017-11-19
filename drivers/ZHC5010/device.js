@@ -22,7 +22,7 @@ class ZHC5010 extends ZwaveDevice {
 
 		if (!this.mainNodeDevice || this.mainNodeDevice.isDeleted) {
 			const mainNodeId = Object.keys(this._manager._nodes)[0]; //this.getData().token;
-			this.mainNodeDevice = Object.values(this.getDriver().__devices).find(device =>
+			this.mainNodeDevice = Object.values(this.getDriver().getDevices()).find(device =>
 				device.getData().token === mainNodeId
 			)
 			if (mainNodeId == this.getData().token) this.log('mainNodeID registered as', mainNodeId)
@@ -37,10 +37,7 @@ class ZHC5010 extends ZwaveDevice {
 			}),
 
 			this.registerCapability('dim', 'SWITCH_MULTILEVEL', {
-				getOpts: {
-					getOnStart: true, // get the initial value on app start
-				},
-				// required
+				// required since report contains 'Value (RAW)'
 				report: 'SWITCH_MULTILEVEL_SET',
 				reportParserV4: report => {
 					if (report && report.hasOwnProperty('Value (Raw)')) {
@@ -53,8 +50,8 @@ class ZHC5010 extends ZwaveDevice {
 
 		//===== SYNCHRONISE RELAY BASED END DEVICE
 		this.registerReportListener('BASIC', 'BASIC_REPORT', (rawReport, parsedReport) => {
-			if (this.__data.multiChannelNodeId === this.mainNodeDevice.getSetting('relay_mode')) {
-				this.log('Setting the Relay switch to', rawReport.Value === 255, 'based on a state change of multiChannel ID', this.__data.multiChannelNodeId);
+			if (this.getData().multiChannelNodeId === this.mainNodeDevice.getSetting('relay_mode')) {
+				this.log('Setting the Relay switch to', rawReport.Value === 255, 'based on a state change of multiChannel ID', this.getData().multiChannelNodeId);
 				this.mainNodeDevice.setCapabilityValue('onoff', rawReport.Value === 255);
 			}
 		})
@@ -204,6 +201,22 @@ class ZHC5010 extends ZwaveDevice {
 		actionZHC5010_stopLEDflash
 			.register()
 			.registerRunListener(ZHC5010_stopLEDflash_run_listener);
+
+		// define FlowCardAction to stop the flashing of the LED indicator
+		let actionZHC5010_updateDimState_run_listener = async(args) => {
+			this.log('New dim-level received: ', args.set_dim_level_state);
+			//this.log(this.__state['onoff'], this.__state['dim']);
+			//this.__state['onoff'] = args.set_dim_level_state > 0;
+			//this.__state['dim'] = args.set_dim_level_state;
+			//this.log(this.__state['onoff'], this.__state['dim']);
+			this.log('multiChannelNodeId', this.__data.multiChannelNodeId);
+			this.setCapabilityValue('dim', args.set_dim_level_state);
+		};
+
+		let actionZHC5010_updateDimState = new Homey.FlowCardAction('ZHC5010_update_dim_state');
+		actionZHC5010_updateDimState
+			.register()
+			.registerRunListener(actionZHC5010_updateDimState_run_listener);
 	}
 
 	onDeleted() {
