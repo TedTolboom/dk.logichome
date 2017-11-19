@@ -174,5 +174,32 @@
 				]
 			}
 		]
+	},
+	{
+		"id": "ZHC5010_update_dim_state",
+		"title": {
+			"en": "Update state dim-level",
+			"nl": "Pas the dim-level toestand aan"
+		},
+		"hint": {
+			"en": "Change the \"set forced brightness\" parameter of your dimmer. If this parameter is active, switching on the Dimmer 2 (S1 single click) will always set this brightness level, 0 will disable this function.\nRange: 1 - 99 percentage of brightness.",
+			"nl": "Stel de \"geforceerde helderheid\" parameter van een dimmer in. Wanneer deze parameter actief is, zal bij het inschakelen van Dimmer 2 (S1 single click) altijd naar deze helderheid inschakelen, 0 schakelt deze functie uit.\nBereik: 1 - 99 helderheids percentage."
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010&capabilities=dim"
+			},
+			{
+				"name": "set_dim_level_state",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+			}
+		]
 	}
 ]
