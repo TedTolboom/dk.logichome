@@ -4,29 +4,22 @@ const Homey = require('homey');
 const ZwaveDevice = require('homey-meshdriver').ZwaveDevice;
 
 class ZHC5010 extends ZwaveDevice {
-	onMeshInit() {
+	async onMeshInit() {
 
 		let PreviousSequenceNo = null;
 
-		/*
 		process.on('unhandledRejection', error => {
 			console.error(error.stack);
 		})
-		*/
 
 		// enable debugging
-		this.enableDebug();
+		// this.enableDebug();
 
 		// print the node's info to the console
-		this.printNode();
+		// this.printNode();
 
-		if (!this.mainNodeDevice || this.mainNodeDevice.isDeleted) {
-			const mainNodeId = Object.keys(this._manager._nodes)[0]; //this.getData().token;
-			this.mainNodeDevice = Object.values(this.getDriver().getDevices()).find(device =>
-				device.getData().token === mainNodeId
-			)
-			if (mainNodeId == this.getData().token) this.log('mainNodeID registered as', mainNodeId)
-		}
+		this.onNodesChanged = this._onNodesChanged.bind(this);
+		this.getDriver().on('nodes_changed', this.onNodesChanged);
 
 		//===== REGISTER CAPABILITIES
 		// register capabilities for this device
@@ -58,61 +51,46 @@ class ZHC5010 extends ZwaveDevice {
 		})
 
 		//===== SCENE ACTIVATION
-		this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', (rawReport, parsedReport) => {
-			if (rawReport &&
-				rawReport.hasOwnProperty('Properties1') &&
-				rawReport.Properties1.hasOwnProperty('Key Attributes') &&
-				rawReport.hasOwnProperty('Scene Number') &&
-				rawReport.hasOwnProperty('Sequence Number')) {
-				if (rawReport['Sequence Number'] !== PreviousSequenceNo) {
-					const reportButton = rawReport['Scene Number'];
-					// correct for Scene notification offset to get the actual button
-					const actualButton = reportButton - (this.getSetting('scene_offset') - 1);
+		const commandClassScene = this.getCommandClass('CENTRAL_SCENE');
+		if (!(commandClassScene instanceof Error)) {
+			this.registerReportListener('CENTRAL_SCENE', 'CENTRAL_SCENE_NOTIFICATION', (rawReport, parsedReport) => {
+				if (rawReport &&
+					rawReport.hasOwnProperty('Properties1') &&
+					rawReport.Properties1.hasOwnProperty('Key Attributes') &&
+					rawReport.hasOwnProperty('Scene Number') &&
+					rawReport.hasOwnProperty('Sequence Number')) {
+					if (rawReport['Sequence Number'] !== PreviousSequenceNo) {
+						const reportButton = rawReport['Scene Number'];
+						// correct for Scene notification offset to get the actual button
+						const actualButton = reportButton - (this.getSetting('scene_offset') - 1);
 
-					const remoteValue = {
-						scene_number: reportButton.toString(),
-						button: actualButton.toString(),
-						scene: rawReport.Properties1['Key Attributes'],
-					};
-					PreviousSequenceNo = rawReport['Sequence Number'];
-					this.log('Scene notification report:', remoteValue, 'Sequence Number: ', PreviousSequenceNo)
-					// Trigger the trigger card with 2 dropdown options
-					triggerZHC5010_scene.trigger(this, triggerZHC5010_scene.getArgumentValues, remoteValue);
-					// Trigger the trigger card with tokens
-					triggerZHC_button.trigger(this, remoteValue, null);
-
-					if (remoteValue.scene === 'Key Held Down' || remoteValue.scene === 'Key Held Down') {
-						let button_held = 0;
-						if (remoteValue.scene = 'Key Held Down') button_held = remoteValue.scene_number
-						this.log(remoteValue.scene, 'keyheld state updated to:', button_held, typeof (button_held))
-						// this.setCapabilityValue('scene_notification_custom_capability', button_held);
-						// conditionZHC5010_keyheld.trigger(this, conditionZHC5010_keyheld.getArgumentValues, button_held);
+						const remoteValue = {
+							scene_number: reportButton.toString(),
+							button: actualButton.toString(),
+							scene: rawReport.Properties1['Key Attributes'],
+						};
+						PreviousSequenceNo = rawReport['Sequence Number'];
+						this.log('Scene notification report:', remoteValue, 'Sequence Number: ', PreviousSequenceNo)
+						// Trigger the trigger card with 2 dropdown options
+						triggerZHC5010_scene.trigger(this, triggerZHC5010_scene.getArgumentValues, remoteValue);
+						// Trigger the trigger card with tokens
+						triggerZHC_button.trigger(this, remoteValue, null);
 					}
 				}
-			}
-		});
-
-		// define and register FlowCardTriggers
-		let triggerZHC5010_scene = new Homey.FlowCardTriggerDevice('ZHC5010_scene');
-		triggerZHC5010_scene
-			.register()
-			.registerRunListener((args, state) => {
-				this.log(args, state);
-				return Promise.resolve(args.button === state.button && args.scene === state.scene);
 			});
 
-		let triggerZHC_button = new Homey.FlowCardTriggerDevice('ZHC_button');
-		triggerZHC_button
-			.register();
+			// define and register FlowCardTriggers
+			let triggerZHC5010_scene = new Homey.FlowCardTriggerDevice('ZHC5010_scene');
+			triggerZHC5010_scene
+				.register()
+				.registerRunListener((args, state) => {
+					return Promise.resolve(args.button === state.button && args.scene === state.scene);
+				});
 
-		// define and register FlowCardTriggers
-		let conditionZHC5010_keyheld = new Homey.FlowCardCondition('ZHC5010_keyheld');
-		conditionZHC5010_keyheld
-			.register()
-			.registerRunListener((args, state) => {
-				this.log(args, state, args.button === state.button);
-				return Promise.resolve(args.button === state.button);
-			});
+			let triggerZHC_button = new Homey.FlowCardTriggerDevice('ZHC_button');
+			triggerZHC_button
+				.register();
+		}
 
 		//===== CONTROL LED's flow card actions
 		// define FlowCardAction to set the LED indicator LED level
@@ -203,25 +181,26 @@ class ZHC5010 extends ZwaveDevice {
 			.register()
 			.registerRunListener(ZHC5010_stopLEDflash_run_listener);
 
-		// define FlowCardAction to stop the flashing of the LED indicator
-		let actionZHC5010_updateDimState_run_listener = async(args) => {
-			this.log('New dim-level received: ', args.set_dim_level_state);
-			//this.log(this.__state['onoff'], this.__state['dim']);
-			//this.__state['onoff'] = args.set_dim_level_state > 0;
-			//this.__state['dim'] = args.set_dim_level_state;
-			//this.log(this.__state['onoff'], this.__state['dim']);
-			this.log('multiChannelNodeId', this.getData().multiChannelNodeId);
-			this.setCapabilityValue('dim', args.set_dim_level_state);
-		};
-
-		let actionZHC5010_updateDimState = new Homey.FlowCardAction('ZHC5010_update_dim_state');
-		actionZHC5010_updateDimState
-			.register()
-			.registerRunListener(actionZHC5010_updateDimState_run_listener);
+		// enforce update of mainNodeId during init of device driver
+		this.getDriver().emit('nodes_changed');
+		this.log('Registered capabilities', this.getCapabilities());
 	}
 
+	// update of mainNodeId during init of device driver
+	_onNodesChanged() {
+		if (!this.mainNodeDevice || this.mainNodeDevice.isDeleted) {
+			const mainNodeId = Object.keys(this._manager._nodes)[0]; //this.getData().token;
+			this.mainNodeDevice = Object.values(this.getDriver().getDevices()).find(device =>
+				device.getData().token === mainNodeId
+			)
+			if (mainNodeId == this.getData().token) this.log('mainNodeID registered as', mainNodeId)
+		}
+	}
+
+	// when device is deleted, remove Listener
 	onDeleted() {
 		this.isDeleted = true;
+		this.getDriver().removeListener('nodes_changed', this.onNodesChanged);
 	}
 
 	//===== UPDATE PARAMETERS
@@ -248,10 +227,7 @@ class ZHC5010 extends ZwaveDevice {
 					oldValue,
 				};
 				this.log('Setting non-secure groups for button', i, 'to decimal value:', value);
-				// changedKey.parsedValue = super._systemSettingParser(changedKey.value, changedKey);
-				// changedKey.parsedOldValue = super._systemSettingParser(changedKey.oldValue, changedKey);
 				changedKeys.push(changedKey);
-
 				// >> REMOVE 'but' + i + '_nonsec_bit' from changedKeysArr
 
 			};
@@ -279,7 +255,6 @@ class ZHC5010 extends ZwaveDevice {
 				changedKey.parsedOldValue = changedKey.parsedValue.readUIntBE(0, 4);
 				this.log('Setting Multilevel Switch settings for button', i, 'to enabled:', arr[0] === 1, ', with switch values:', arr[1], '/', arr[2], '(upper/lower)');
 				changedKeys.push(changedKey);
-
 				// >> REMOVE 'but' + i + '_multilevel_byte from changedKeysArr
 			}
 		};
@@ -294,7 +269,6 @@ class ZHC5010 extends ZwaveDevice {
 						index: changedKey.id,
 						size: changedKey.size
 					}, changedKey.value)
-					// await this.ZHC_configuration_run_listener(this, changedKey)
 				})
 			)
 			.then(() => {
@@ -318,15 +292,12 @@ class ZHC5010 extends ZwaveDevice {
 						index: changedKey.id,
 						size: changedKey.size
 					}, changedKey.value);
-
-					// await this.ZHC_configuration_run_listener(this, changedKey)
 				});
 
 				callback(err || new Error('settings_change_failed'));
 				return Promise.reject(err || new Error('settings_change_failed'));
 			});
 	}
-
 }
 
 module.exports = ZHC5010;
