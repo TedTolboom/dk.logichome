@@ -33,14 +33,20 @@ Triggers:
  6. Press save settings.
 
 ## Change Log:
+### v 2.0.0
+* Major app update to SDK2   
+* Added all options to support FW 2.x of ZHC5010   
+* Re-pairing (removal and inclusion) based on new app strongly recommended for ZHC5010 (scene flowcards will not work)
+* Restructured parameters settings to simplify options   
+
 ### v 1.0.4
-Fixed minor error in switch Binary report parser in case a number is reported as Switch value   
+* Fixed minor error in switch Binary report parser in case a number is reported as Switch value   
 ### v 1.0.3
-Fixed issue preventing status from being updated (manual action required! see note above)    
-Fixed issue with indicator flow card not able to turn of indicator LED   
+* Fixed issue preventing status from being updated (manual action required! see note above)    
+* Fixed issue with indicator flow card not able to turn of indicator LED   
 ### v 1.0.2
-Fix issue preventing driver to crash when using the "Set LED level" and "Set LED flash" flow cards    
+* Fix issue preventing driver to crash when using the "Set LED level" and "Set LED flash" flow cards    
 ### v 1.0.1
-Filter out Central Scene messages with duplicate sequence numbers
+* Filter out Central Scene messages with duplicate sequence numbers
 ### v 1.0.0
-Added support for ZHC5010 Wall switch module
+* Added support for ZHC5010 Wall switch module
