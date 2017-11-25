@@ -21,6 +21,9 @@ class ZHC5010 extends ZwaveDevice {
 		this.onNodesChanged = this._onNodesChanged.bind(this);
 		this.getDriver().on('nodes_changed', this.onNodesChanged);
 
+		// enforce update of mainNodeId during init of device driver
+		this.getDriver().emit('nodes_changed');
+
 		//===== REGISTER CAPABILITIES
 		// register capabilities for this device
 		this.registerCapability('onoff', 'BASIC', {
@@ -181,8 +184,6 @@ class ZHC5010 extends ZwaveDevice {
 			.register()
 			.registerRunListener(ZHC5010_stopLEDflash_run_listener);
 
-		// enforce update of mainNodeId during init of device driver
-		this.getDriver().emit('nodes_changed');
 		this.log('Registered capabilities', this.getCapabilities());
 	}
 
@@ -190,7 +191,7 @@ class ZHC5010 extends ZwaveDevice {
 	_onNodesChanged() {
 		if (!this.mainNodeDevice || this.mainNodeDevice.isDeleted) {
 			const mainNodeId = Object.keys(this._manager._nodes)[0]; //this.getData().token;
-			this.mainNodeDevice = Object.values(this.getDriver().getDevices()).find(device =>
+			this.mainNodeDevice = this.getDriver().getDevices().find(device =>
 				device.getData().token === mainNodeId
 			)
 			if (mainNodeId == this.getData().token) this.log('mainNodeID registered as', mainNodeId)
