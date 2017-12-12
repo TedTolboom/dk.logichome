@@ -24,14 +24,14 @@
 		"manufacturerId": 564,
 		"productTypeId": 3,
 		"productId": 266,
-		"learnmode.": {
-			"image": "drivers/ZHC5010/assets/icon.svg",
+		"learnmode": {
+			"image": "drivers/ZHC5010/assets/learnmode.svg",
 			"instruction": {
 				"en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate inclusion mode in the device."
 			}
 		},
-		"unlearnmode.": {
-			"image": "/drivers/ZHC5010/assets/icon.svg",
+		"unlearnmode": {
+			"image": "/drivers/ZHC5010/assets/learnmode.svg",
 			"instruction": {
 				"en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate exclusion mode in the device."
 			}

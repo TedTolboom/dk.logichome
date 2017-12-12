@@ -1,6 +1,13 @@
 # Logic Home Control - DEVELOPMENT VERSION
 
-This app adds support for Logic Home Control devices in Homey.
+This app adds support for Logic Home Control Z-wave devices made by [Logic Home Control ApS](http://logichome.dk/).
+
+## Links:
+[Xiaomi-mi Zigbee app Athom apps](https://apps.athom.com/app/dk.logichome)                    
+[Xiaomi-mi Zigbee app Github repository](https://github.com/TedTolboom/dk.logichome)   
+
+**Note:** This app is using [HomeyConfig composer](https://www.npmjs.com/package/node-homey-config-composer).   
+Please file Pull Requests on the *development* branch of this repository and with respect to the refactored files in _/drivers_ and _/config_ folders.   
 
 ## Supported devices
 * ZHC5010, Wall switch module for FUGA® installations (http://logichome.dk/index.php/products/3-zhc5010-z-wave-switch-module-for-fuga-installations)
