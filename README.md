@@ -3,8 +3,8 @@
 This app adds support for Logic Home Control Z-wave devices made by [Logic Home Control ApS](http://logichome.dk/).
 
 ## Links:
-[Xiaomi-mi Zigbee app Athom apps](https://apps.athom.com/app/dk.logichome)                    
-[Xiaomi-mi Zigbee app Github repository](https://github.com/TedTolboom/dk.logichome)   
+[Logic Home Control app Athom apps](https://apps.athom.com/app/dk.logichome)                    
+[Logic Home Control Github repository](https://github.com/TedTolboom/dk.logichome)   
 
 **Note:** This app is using [HomeyConfig composer](https://www.npmjs.com/package/node-homey-config-composer).   
 Please file Pull Requests on the *development* branch of this repository and with respect to the refactored files in _/drivers_ and _/config_ folders.   
@@ -30,20 +30,13 @@ Triggers:
  Actions:
  * It is possible to control the 4 LED's, by means of action cards.
 
- Note:
- * For status updates being correctly updated, a manual action is required:   
- 1. Go to the devices tab > Main node card of the ZHC5010
- 2. Open settings (wrench symbol)
- 3. Unfold associations
- 4. In all association groups where Homey's ID (1) is present, replace '1' with '1.1' (without quotes)
- 5. Add Homey's ID '1.1' to the association groups for 'Binary Switch Set' or 'Multilevel Switch Set' when dimming value is needed
- 6. Press save settings.
-
 ## Change Log:
 ### v 2.0.0
 * Major app update to SDK2   
 * Added all options to support FW 2.x of ZHC5010   
 * Re-pairing (removal and inclusion) based on new app strongly recommended for ZHC5010 (scene flowcards will not work)
+* It is advised to remove devices before updating the v 2.0.0 as this will reset the device and ease inclusion.
+* Not removing a device prior to installation of v 2.0.0 will result in five orphaned devices that has to be deleted individually afterwards.
 * Restructured parameters settings to simplify options   
 
 ### v 1.0.4
