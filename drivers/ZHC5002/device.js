@@ -212,7 +212,7 @@ class ZHC5002 extends ZwaveDevice {
 		this.log(changedKeysArr);
 
 		const changedKeys = [];
-		//check if one of the 4 button parameters has been changed
+		//check if one of the 6 button parameters has been changed
 		for (var i = 1; i <= 6; i++) {
 			// Non-secure commands for devices in logical device i association groups (bit patterns): but(i)_nonsec_bit(j)
 			if (changedKeysArr.join().includes('but' + i + '_nonsec_bit')) {

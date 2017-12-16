@@ -33,11 +33,12 @@ Triggers:
 ## Change Log:
 ### v 2.0.0
 * Major app update to SDK2   
-* Added all options to support FW 2.x of ZHC5010   
-* Re-pairing (removal and inclusion) based on new app strongly recommended for ZHC5010 (scene flowcards will not work)
-* It is advised to remove devices before updating the v 2.0.0 as this will reset the device and ease inclusion.
-* Not removing a device prior to installation of v 2.0.0 will result in five orphaned devices that has to be deleted individually afterwards.
+* Added all options to support FW 2.x (secure includion) of ZHC5010   
 * Restructured parameters settings to simplify options   
+###Release notes:
+* Re-pairing (removal and inclusion) based on new app strongly recommended for ZHC5010 (scene flowcards will not work)
+* It is advised to remove devices before updating the v 2.0.0 as this will reset the device and erase inclusion.
+* Not removing a device prior to installation of v 2.0.0 will result in five orphaned devices that has to be deleted individually afterwards.
 
 ### v 1.0.4
 * Fixed minor error in switch Binary report parser in case a number is reported as Switch value   
