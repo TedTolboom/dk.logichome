@@ -1,0 +1,76 @@
+[{
+	"id": "ZHC5010_scene",
+	"title": {
+		"en": "Scene is activated"
+	},
+	"hint": {
+		"en": "This card will trigger on a specific button and scene combination pressed."
+	},
+	"args": [
+		{
+			"name": "device",
+			"type": "device",
+			"filter": "driver_id=ZHC5010&capabilities=scene_notification_custom_capability"
+		},
+		{
+			"name": "button",
+			"type": "dropdown",
+			"values": [
+				{
+					"id": "1",
+					"label": {
+						"en": "Button 1"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Button 2"
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+						"en": "Button 3"
+					}
+				},
+				{
+					"id": "4",
+					"label": {
+						"en": "Button 4"
+					}
+				}
+			]
+		},
+		{
+			"name": "scene",
+			"type": "dropdown",
+			"values": [
+				{
+					"id": "Key Pressed 1 time",
+					"label": {
+						"en": "Pressed 1x"
+					}
+				},
+				{
+					"id": "Key Pressed 2 times",
+					"label": {
+						"en": "Pressed 2x"
+					}
+				},
+				{
+					"id": "Key Held Down",
+					"label": {
+						"en": "Held down"
+					}
+				},
+				{
+					"id": "Key Released",
+					"label": {
+						"en": "Press released"
+					}
+				}
+			]
+		}
+	]
+}]

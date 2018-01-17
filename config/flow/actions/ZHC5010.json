@@ -1,0 +1,178 @@
+[
+	{
+		"id": "ZHC5010_set_led_level",
+		"title": {
+			"en": "Set LED level"
+		},
+		"hint": {
+			"en": "Set the \"indicator LED brightness level\" for a specific button. \nRange: 0 - 100 percentage of brightness.\n0 = indicator LED switched OFF"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
+			},
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Button 1"
+						}
+					},
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Button 2"
+						}
+					},
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Button 3"
+						}
+					},
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Button 4"
+						}
+					}
+				]
+			},
+			{
+				"name": "level",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+			}
+		]
+	},
+	{
+		"id": "ZHC5010_set_led_flash",
+		"title": {
+			"en": "Set LED flash"
+		},
+		"hint": {
+			"en": "Set the \"indicator LED flashing conditions\" for a specific button. \nLevel\nRange: 0 - 100 percentage of brightness.\n0 = indicator LED switched OFF\nOn/Off period:\nRange: 0.1 - 25.5 seconds\nOn/Off cycles:\nRange: 0 - 255, 0 = off, 255 = forever"
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
+			},
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Button 1"
+						}
+					},
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Button 2"
+						}
+					},
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Button 3"
+						}
+					},
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Button 4"
+						}
+					}
+				]
+			},
+			{
+				"name": "level",
+				"type": "range",
+				"min": 0,
+				"max": 1,
+				"step": 0.01,
+				"label": "%",
+				"labelMultiplier": 100
+			},
+			{
+				"name": "on_off_period",
+				"type": "number",
+				"min": 0,
+				"max": 25.5,
+				"step": 0.1,
+				"placeholder": {
+					"en": "On/Off period (seconds)"
+				}
+			},
+			{
+				"name": "on_off_cycles",
+				"type": "number",
+				"min": 0,
+				"max": 255,
+				"step": 1,
+				"placeholder": {
+					"en": "On/Off cycles"
+				}
+			}
+		]
+	},
+	{
+		"id": "ZHC5010_stop_led_flash",
+		"title": {
+			"en": "Turn off LED / Stop flashing"
+		},
+		"hint": {
+			"en": "Stop the \"indicator LED flashing conditions\" for a specific button."
+		},
+		"args": [
+			{
+				"name": "device",
+				"type": "device",
+				"filter": "driver_id=ZHC5010&capabilities=configuration_custom_capability"
+			},
+			{
+				"name": "led",
+				"type": "dropdown",
+				"values": [
+					{
+						"id": "BUTTON1_INDICATION",
+						"label": {
+							"en": "Button 1"
+						}
+					},
+					{
+						"id": "BUTTON2_INDICATION",
+						"label": {
+							"en": "Button 2"
+						}
+					},
+					{
+						"id": "BUTTON3_INDICATION",
+						"label": {
+							"en": "Button 3"
+						}
+					},
+					{
+						"id": "BUTTON4_INDICATION",
+						"label": {
+							"en": "Button 4"
+						}
+					}
+				]
+			}
+		]
+	}
+]

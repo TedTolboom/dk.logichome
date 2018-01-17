@@ -1,0 +1,1774 @@
+{
+	"id": "ZHC5002",
+	"branch": "master",
+	"name": {
+		"en": "ZHC5002 - Relay"
+	},
+	"class": "socket",
+	"capabilities": [
+		"onoff",
+		"configuration_custom_capability",
+		"scene_notification_custom_capability"
+	],
+	"capabilitiesOptions": {
+		"onoff": {
+			"setOnDim": false
+		}
+	},
+	"image": "drivers/ZHC5002/assets/icon.svg",
+	"images": {
+		"large": "/drivers/ZHC5002/assets/images/large.png",
+		"small": "/drivers/ZHC5002/assets/images/small.png"
+	},
+	"zwave": {
+		"manufacturerId": 564,
+		"productTypeId": 3,
+		"productId": 268,
+		"learnmode": {
+			"image": "drivers/ZHC5002/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate inclusion mode in the device."
+			}
+		},
+		"unlearnmode": {
+			"image": "/drivers/ZHC5002/assets/learnmode.svg",
+			"instruction": {
+				"en": "Press the upper left button, or the little switch in the middle of the module (covered by a plastic cover), EXACTLY 3 times to activate exclusion mode in the device."
+			}
+		},
+		"associationGroups": [
+			1
+		],
+		"associationGroupsMultiChannel": [
+			2,
+			7,
+			12,
+			17,
+			22,
+			27
+		],
+		"associationGroupsOptions": {
+			"1": {
+				"hint": {
+					"en": "Lifeline"
+				}
+			},
+			"2": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #1 is used."
+				}
+			},
+			"3": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #1 is used."
+				}
+			},
+			"4": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #1 is used."
+				}
+			},
+			"5": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #1 is used."
+				}
+			},
+			"6": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #1 is used."
+				}
+			},
+			"7": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #2 is used."
+				}
+			},
+			"8": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #2 is used."
+				}
+			},
+			"9": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #2 is used."
+				}
+			},
+			"10": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #2 is used."
+				}
+			},
+			"11": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #2 is used."
+				}
+			},
+			"12": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #3 is used."
+				}
+			},
+			"13": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #3 is used."
+				}
+			},
+			"14": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #3 is used."
+				}
+			},
+			"15": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #3 is used."
+				}
+			},
+			"16": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #3 is used."
+				}
+			},
+			"17": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #4 is used."
+				}
+			},
+			"18": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #4 is used."
+				}
+			},
+			"19": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #4 is used."
+				}
+			},
+			"20": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #4 is used."
+				}
+			},
+			"21": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #4 is used."
+				}
+			},
+			"22": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #5 is used."
+				}
+			},
+			"23": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #5 is used."
+				}
+			},
+			"24": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #5 is used."
+				}
+			},
+			"25": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #5 is used."
+				}
+			},
+			"26": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #5 is used."
+				}
+			},
+			"27": {
+				"hint": {
+					"en": "Sends Basic Report (On/Off) when button #6 is used."
+				}
+			},
+			"28": {
+				"hint": {
+					"en": "Sends Basic Set (On/Off) when button #6 is used."
+				}
+			},
+			"29": {
+				"hint": {
+					"en": "Sends Binary Switch Set (On/Off) when button #6 is used."
+				}
+			},
+			"30": {
+				"hint": {
+					"en": "Sends Binary Toggle Switch Set when button #6 is used."
+				}
+			},
+			"31": {
+				"hint": {
+					"en": "Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when button #6 is used."
+				}
+			}
+		},
+		"multiChannelNodes": {
+			"1": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_1.svg",
+				"name": {
+					"en": "ZHC5002 - Button 1"
+				}
+			},
+			"2": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_2.svg",
+				"name": {
+					"en": "ZHC5002 - Button 2"
+				}
+			},
+			"3": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_3.svg",
+				"name": {
+					"en": "ZHC5002 - Button 3"
+				}
+			},
+			"4": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_4.svg",
+				"name": {
+					"en": "ZHC5002 - Button 4"
+				}
+			},
+			"5": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_5.svg",
+				"name": {
+					"en": "ZHC5002 - Button 5"
+				}
+			},
+			"6": {
+				"class": "socket",
+				"capabilities": [
+					"onoff",
+					"dim"
+				],
+				"icon": "/drivers/ZHC5002/assets/icon_6.svg",
+				"name": {
+					"en": "ZHC5002 - Button 6"
+				}
+			}
+		},
+		"defaultConfiguration": [
+			{
+				"id": 13,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 14,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 15,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 16,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 17,
+				"size": 4,
+				"value": 23265280
+			},
+			{
+				"id": 18,
+				"size": 4,
+				"value": 23265280
+			}
+		]
+	},
+	"settings": [
+		{
+			"id": "upper_paddle_mode",
+			"zwave": {
+				"index": 1,
+				"size": 1
+			},
+			"value": "0",
+			"type": "dropdown",
+			"label": {
+				"en": "Upper paddle buttons"
+			},
+			"hint": {
+				"en": "Select Pair Mode for the upper two buttons (button #1 and #2).\nParameter: 1"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Separate mode (toggle mode) (Default)"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "In pair mode; left side is on/up, right side is off/down."
+					}
+				}
+			]
+		},
+		{
+			"id": "middle_paddle_mode",
+			"zwave": {
+				"index": 2,
+				"size": 1
+			},
+			"value": "0",
+			"type": "dropdown",
+			"label": {
+				"en": "Middle paddle buttons"
+			},
+			"hint": {
+				"en": "Select Pair Mode for the middle two buttons (button #3 and #4).\nParameter: 2"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Separate mode (toggle mode) (Default)"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "In pair mode; left side is on/up, right side is off/down."
+					}
+				}
+			]
+		},
+		{
+			"id": "lower_paddle_mode",
+			"zwave": {
+				"index": 3,
+				"size": 1
+			},
+			"value": "0",
+			"type": "dropdown",
+			"label": {
+				"en": "Lower paddle buttons"
+			},
+			"hint": {
+				"en": "Select Pair Mode for the lower two buttons (button #5 and #6).\nParameter: 3"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Separate mode (toggle mode) (Default)"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "In pair mode: left side is on/up, right side is off/down"
+					}
+				}
+			]
+		},
+		{
+			"id": "relay_mode",
+			"zwave": {
+				"index": 10,
+				"size": 1
+			},
+			"value": "1",
+			"type": "dropdown",
+			"label": {
+				"en": "Relay mode"
+			},
+			"hint": {
+				"en": "Define which of the buttons controls the built-in relay, or if the relay only will be activated for 0.5 seconds, each time button #1 is used.\nParameter: 10"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Disabled"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Controlled by button #1 or by upper paddle in pair mode. (Default)"
+					}
+				},
+				{
+					"id": "2",
+					"label": {
+						"en": "Controlled by button #2 or by upper paddle in pair mode."
+					}
+				},
+				{
+					"id": "3",
+					"label": {
+						"en": " Controlled by button #3 or by middle paddle in pair mode."
+					}
+				},
+				{
+					"id": "4",
+					"label": {
+						"en": "Controlled by button #4 or by middle paddle in pair mode."
+					}
+				},
+				{
+					"id": "5",
+					"label": {
+						"en": "Controlled by button #5 or by lower paddle in pair mode."
+					}
+				},
+				{
+					"id": "6",
+					"label": {
+						"en": "Controlled by button #6 or by lower paddle in pair mode."
+					}
+				},
+				{
+					"id": "7",
+					"label": {
+						"en": "Activated for 1.0 seconds, controlled by button #1 (or by upper paddle in pair mode)."
+					}
+				}
+			]
+		},
+		{
+			"id": "disable_scene_notifications",
+			"zwave": {
+				"index": 11,
+				"size": 1
+			},
+			"value": false,
+			"type": "checkbox",
+			"label": {
+				"en": "Disable Central Scene notification"
+			},
+			"hint": {
+				"en": "Disable or enable the \"Central Scene notification\".\nParameter: 11\nDefault: Enabled (unchecked)"
+			}
+		},
+		{
+			"id": "disable_house_cleaning_mode",
+			"zwave": {
+				"index": 12,
+				"size": 1
+			},
+			"value": false,
+			"type": "checkbox",
+			"label": {
+				"en": "Disable House Cleaning Mode"
+			},
+			"hint": {
+				"en": "Enable or disable the \"House Cleaning Mode\", where ZHC5010 is able to send a dimming command to set the level of the lights to 100% by pressing a button twice to associated devices.\nIf buttons are in \"pair mode\" (parameters 1, 2 and 3) \"House Cleaning Mode\" will only be activated by clicking the left button twice.\nParameter: 12\nDefault: Enabled (unchecked)"
+			}
+		},
+		{
+			"id": "backlight_control",
+			"zwave": {
+				"index": 25,
+				"size": 1
+			},
+			"value": "1",
+			"type": "dropdown",
+			"label": {
+				"en": "Backlight control"
+			},
+			"hint": {
+				"en": "Configuration of backlight control.\nParameter: 25"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Backlight is only controlled by Indicator Command Class – commands send to endpoint 0"
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Backlight is turned on for 5 seconds when a button is pressed. (Default)"
+					}
+				}
+			]
+		},
+		{
+			"id": "basic_set_endpoint0",
+			"zwave": {
+				"index": 26,
+				"size": 1
+			},
+			"value": "0",
+			"type": "dropdown",
+			"label": {
+				"en": "Basic Set for endpoint 0"
+			},
+			"hint": {
+				"en": "Enable or disable that Basic Set commands to the root device will be able to control the backlight.\nParameter: 26"
+			},
+			"values": [
+				{
+					"id": "0",
+					"label": {
+						"en": "Basic Set commands to endpoint 0 is forwarded to endpoint 1 (Default)."
+					}
+				},
+				{
+					"id": "1",
+					"label": {
+						"en": "Basic Set commands to endpoint 0 controls backlight (on/off)."
+					}
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 1"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led1_mode",
+					"zwave": {
+						"index": 4,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 1\nParameter: 4"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates status of corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but1_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 13 (byte 1)\nDefault: enabled."
+							}
+						},
+						{
+							"id": "but1_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 13 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but1_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6.\nParameter: 13 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 % (OFF)"
+							}
+						}
+					]
+				},
+				{
+					"id": "but1_switch_groups",
+					"zwave": {
+						"index": 19,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 19\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but1_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 2 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 27 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but1_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 3 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 27 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but1_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 4 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 27 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but1_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 5 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 27 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but1_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 6 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 27 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 2"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led2_mode",
+					"zwave": {
+						"index": 5,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 2\nParameter: 5"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates the status of the corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status of corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates the status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of the built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "LED indication is ONLY controlled by Command Class Basic Set commands."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but2_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 11 will be switched between the configured upper and lower switch values.nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 14 (byte 1)\nDefault: enabled"
+							}
+						},
+						{
+							"id": "but2_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 14 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\n: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but2_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 11.\nParameter: 14 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
+							}
+						}
+					]
+				},
+				{
+					"id": "but2_switch_groups",
+					"zwave": {
+						"index": 20,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 20\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but2_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 7 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 28 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but2_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 8 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 28 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but2_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 9 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 28 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but2_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 10 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 28 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but2_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 11 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 28 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 3"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led3_mode",
+					"zwave": {
+						"index": 6,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 3\nParameter: 6"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates status of corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status of corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates the status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of the built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "LED indication is ONLY controlled by Command Class Basic Set commands."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but3_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 16 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 15 (byte 1)\nDefault: enabled"
+							}
+						},
+						{
+							"id": "but3_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 15 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nIf the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but3_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 16.\nParameter: 15 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
+							}
+						}
+					]
+				},
+				{
+					"id": "but3_switch_groups",
+					"zwave": {
+						"index": 21,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 21\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but3_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 12 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 29 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but3_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 13 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 29 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but3_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 14 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 29 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but3_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 15 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 29 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but3_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 16 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 29 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 4"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led4_mode",
+					"zwave": {
+						"index": 7,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 4\nParameter: 7"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates status of corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status of corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates the status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						},
+						{
+							"id": "8",
+							"label": {
+								"en": "LED indication is ONLY controlled by Command Class Basic Set commands."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but4_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 21 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 16 (byte 1)\nDefault: enabled"
+							}
+						},
+						{
+							"id": "but4_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 16 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON)\nIf the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but4_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 21.\nParameter: 16 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 %"
+							}
+						}
+					]
+				},
+				{
+					"id": "but4_switch_groups",
+					"zwave": {
+						"index": 22,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 22\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but4_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 17 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 30 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but4_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 18 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 30 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but4_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 19 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 30 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but4_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 20 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 30 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but4_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 21 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 30 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 5"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led5_mode",
+					"zwave": {
+						"index": 8,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 5\nParameter: 8"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates status of corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but5_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 26 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 17 (byte 1)\nDefault: enabled."
+							}
+						},
+						{
+							"id": "but5_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 26.\nParameter: 17 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but5_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 26.\nParameter: 17 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 % (OFF)"
+							}
+						}
+					]
+				},
+				{
+					"id": "but5_switch_groups",
+					"zwave": {
+						"index": 23,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 23\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but5_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 22 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 31 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but5_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 23 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 31 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but5_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 24 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 31 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but5_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 25 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 31 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but5_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 26 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 31 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "group",
+			"label": {
+				"en": "Settings Button 6"
+			},
+			"collapsed": true,
+			"children": [
+				{
+					"id": "led6_mode",
+					"zwave": {
+						"index": 9,
+						"size": 1
+					},
+					"value": "1",
+					"type": "dropdown",
+					"label": {
+						"en": "LED mode"
+					},
+					"hint": {
+						"en": "Configure the LED status indication for LED 6\nParameter: 9"
+					},
+					"values": [
+						{
+							"id": "0",
+							"label": {
+								"en": "LED indication is disabled (can be controlled by Indicator Command Class commands)."
+							}
+						},
+						{
+							"id": "1",
+							"label": {
+								"en": "LED indicates status of corresponding button. (Default)"
+							}
+						},
+						{
+							"id": "2",
+							"label": {
+								"en": "LED indicates inverse status corresponding button."
+							}
+						},
+						{
+							"id": "3",
+							"label": {
+								"en": "LED indicates status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "4",
+							"label": {
+								"en": "LED indicates inverse status of corresponding paddle (in pair mode)."
+							}
+						},
+						{
+							"id": "5",
+							"label": {
+								"en": "LED indicates the status of the built-in relay."
+							}
+						},
+						{
+							"id": "6",
+							"label": {
+								"en": "LED indicates inverse status of built-in relay."
+							}
+						},
+						{
+							"id": "7",
+							"label": {
+								"en": "LED show a 5 seconds indication when the corresponding button is pressed."
+							}
+						}
+					]
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Multilevel Switch on single press"
+					},
+					"children": [
+						{
+							"id": "but6_multilevel_byte1",
+							"value": true,
+							"type": "checkbox",
+							"label": {
+								"en": "Enable switch"
+							},
+							"hint": {
+								"en": "When single pressing the button, nodes associated to group 31 will be switched between the configured upper and lower switch values.\nIf \"Upper Switch Value\" (see below) is set to 255 and an associated device a dimmer supporting this, the dimmer will turn on at the level as when turned off.\nParameter: 18 (byte 1)\nDefault: enabled."
+							}
+						},
+						{
+							"id": "but6_multilevel_byte2",
+							"value": 99,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 255
+							},
+							"label": {
+								"en": "Upper switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 31.\nParameter: 18 (byte 2)\nRange: 0 - 99 (dim-level), 255 (ON: If the associated device is a dimmer supporting this, the dimmer will turn on at the level as when turned off)\nDefault: 99%"
+							}
+						},
+						{
+							"id": "but6_multilevel_byte3",
+							"value": 0,
+							"type": "number",
+							"attr": {
+								"min": 0,
+								"max": 99
+							},
+							"label": {
+								"en": "Lower switch value"
+							},
+							"hint": {
+								"en": "When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 31.\nParameter: 18 (byte 3)\nRange: 0 - 99 (dim-level), 255 (ON)\nDefault: 0 % (OFF)"
+							}
+						}
+					]
+				},
+				{
+					"id": "but6_switch_groups",
+					"zwave": {
+						"index": 24,
+						"size": 1
+					},
+					"value": true,
+					"type": "checkbox",
+					"label": {
+						"en": "Switch groups when command received"
+					},
+					"hint": {
+						"en": "Enable or disable if received commands are relayed to the nodes in the association groups.\nParameter: 24\nDefault: Enabled."
+					}
+				},
+				{
+					"type": "group",
+					"label": {
+						"en": "Non-secure commands (FW > 2.0)"
+					},
+					"children": [
+						{
+							"id": "but6_nonsec_bit1",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 27 (Basic Report)"
+							},
+							"hint": {
+								"en": "Basic Report is sent non-secure.\nParameter: 32 (bit 1)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but6_nonsec_bit2",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 28 (Basic Set)"
+							},
+							"hint": {
+								"en": "Basic Set is sent non-secure.\nParameter: 32 (bit 2)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but6_nonsec_bit3",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 29 (Binary Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Switch Set is sent non-secure.\nParameter: 32 (bit 3)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but6_nonsec_bit4",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 30 (Binary Toggle Switch Set)"
+							},
+							"hint": {
+								"en": "Binary Toggle Switch Set is sent non-secure.\nParameter: 32 (bit 4)\nDefault: Unchecked (commands sent secure)."
+							}
+						},
+						{
+							"id": "but6_nonsec_bit5",
+							"value": false,
+							"type": "checkbox",
+							"label": {
+								"en": "Group 31 (Multilevel Switch)"
+							},
+							"hint": {
+								"en": "Multilevel Switch commands are sent non-secure.\nParameter: 32 (bit 5)\nDefault: Unchecked (commands sent secure)."
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,11 +1,10 @@
 {
 	"name": "dk.logichome",
-	"version": "1.0.3",
+	"version": "2.0.0",
 	"description": "This app adds support for Logic Home Control devices in Homey.",
 	"main": "app.js",
 	"dependencies": {
-		"homey-log": "^1.0.2",
-		"homey-zwavedriver": "git+https://github.com/athombv/node-homey-zwavedriver.git"
+		"homey-meshdriver": "^1.2.5"
 	},
 	"devDependencies": {},
 	"scripts": {
