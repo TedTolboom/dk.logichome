@@ -58,7 +58,7 @@ Actions:
 * Add support for the ZHC5002   
 * Added all options to support FW 2.x (secure inclusion) of [ZHC5010](http://logichome.dk/index.php/10-support-categories/6-zhc5010-firmware) and ZHC5002   
 * Restructured parameters settings to simplify options   
-###Release notes:
+### Release notes:
 * Re-pairing (removal and inclusion) based on new app strongly recommended for ZHC5010 (scene flowcards will not work)
 * It is advised to remove devices before updating the v 2.0.0 as this will reset the device and erase inclusion.
 * Not removing a device prior to installation of v 2.0.0 will result in five orphaned devices that has to be deleted individually afterwards.
