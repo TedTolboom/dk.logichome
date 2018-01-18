@@ -17,6 +17,10 @@
         "email": "ktn@logichome.dk"
       },
       {
+        "name": "Christian Bjerre Høyer",
+        "email": "cbh@dadlnet.dk"
+      },
+      {
         "name": "Ted Tolboom",
         "email": "dTNL.Homey@gmail.com"
       }
@@ -701,17 +705,11 @@
         ],
         "associationGroupsMultiChannel": [
           2,
-          6,
           7,
-          11,
           12,
-          16,
           17,
-          21,
           22,
-          26,
-          27,
-          31
+          27
         ],
         "associationGroupsOptions": {
           "1": {
@@ -2480,13 +2478,9 @@
         ],
         "associationGroupsMultiChannel": [
           2,
-          6,
           7,
-          11,
           12,
-          16,
-          17,
-          21
+          17
         ],
         "associationGroupsOptions": {
           "1": {
