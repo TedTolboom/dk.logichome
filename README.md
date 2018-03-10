@@ -53,6 +53,9 @@ Actions:
 * The sub-devices control the linked devices (onoff, dim)
 
 ## Change Log:
+### v 2.0.1
+* Add link to Homey community Forum   
+
 ### v 2.0.0
 * Major app update to SDK2, _requires Homey SW release >=1.5.6_
 * Add support for the ZHC5002   
