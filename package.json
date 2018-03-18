@@ -4,7 +4,8 @@
 	"description": "This app adds support for Logic Home Control devices in Homey.",
 	"main": "app.js",
 	"dependencies": {
-		"homey-meshdriver": "^1.2.5"
+		"git-branch": "^2.0.1",
+		"homey-meshdriver": "^1.2.9"
 	},
 	"devDependencies": {},
 	"scripts": {
