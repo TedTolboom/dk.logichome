@@ -13,6 +13,11 @@
 	"capabilitiesOptions": {
 		"onoff": {
 			"setOnDim": false
+		},
+		"dim": {
+			"opts": {
+				"duration": true
+			}
 		}
 	},
 	"image": "drivers/ZHC5010/assets/icon.svg",
