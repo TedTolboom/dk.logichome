@@ -53,6 +53,11 @@ Actions:
 * The sub-devices control the linked devices (onoff, dim)
 
 ## Change Log:
+### v 2.0.2
+* Update homey-meshdriver to 1.2.9  
+* Add dim duration option for both ZHC5002 and ZHC5010   
+* Driver clean-up for both ZHC5002 and ZHC5010      
+
 ### v 2.0.1
 * Add link to Homey community Forum   
 
