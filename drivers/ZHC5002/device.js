@@ -32,18 +32,22 @@ class ZHC5002 extends ZwaveDevice {
 				},
 			}),
 
-			this.registerCapability('dim', 'SWITCH_MULTILEVEL', {
-				// required since report contains 'Value (RAW)'
-				report: 'SWITCH_MULTILEVEL_SET',
-				reportParserV4: report => {
-					if (report && report.hasOwnProperty('Value (Raw)')) {
-						if (this.hasCapability('onoff')) this.setCapabilityValue('onoff', report['Value (Raw)'][0] > 0);
-						if (report['Value (Raw)'][0] === 255) return 1;
-						return report['Value (Raw)'][0] / 99;
-					}
-					return null;
-				},
-			});
+			this.registerCapability('dim', 'SWITCH_MULTILEVEL');
+
+		/*
+		this.registerCapability('dim', 'SWITCH_MULTILEVEL', {
+			// required since report contains 'Value (RAW)'
+			report: 'SWITCH_MULTILEVEL_SET',
+			reportParserV4: report => {
+				if (report && report.hasOwnProperty('Value (Raw)')) {
+					if (this.hasCapability('onoff')) this.setCapabilityValue('onoff', report['Value (Raw)'][0] > 0);
+					if (report['Value (Raw)'][0] === 255) return 1;
+					return report['Value (Raw)'][0] / 99;
+				}
+				return null;
+			},
+		});
+		*/
 
 		//===== SYNCHRONISE RELAY BASED END DEVICE
 		this.registerReportListener('BASIC', 'BASIC_REPORT', (rawReport, parsedReport) => {
