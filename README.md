@@ -34,7 +34,7 @@ Actions:
  * It is possible to control the 4 LED's, by means of action cards.
 
 ### ZHC5010 application notes
-Detailed application notes for the ZHC5010, the Logic Home Control app (v2.x) and the ZHC5010 firmware version 2.x can be found [here](https://github.com/TedTolboom/dk.logichome/blob/development/docs/ZHC5010_Application_notes.pdf) (credits to @cbho)
+Detailed application notes for the ZHC5010, the Logic Home Control app (v2.x) and the ZHC5010 firmware version 2.x can be found [here](https://github.com/TedTolboom/dk.logichome/blob/development/docs/LHC_Application_notes.pdf) (credits to @cbho)
 
 ## ZHC5002 Features
 
