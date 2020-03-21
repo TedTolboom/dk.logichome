@@ -68,6 +68,77 @@
   "flow": {
     "triggers": [
       {
+        "id": "ZDB5400_scene",
+        "title": {
+          "en": "Scene is activated"
+        },
+        "hint": {
+          "en": "This card will trigger on a specific button and scene combination pressed."
+        },
+        "args": [
+          {
+            "name": "button",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "1",
+                "label": {
+                  "en": "Button 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Button 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Button 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Button 4"
+                }
+              }
+            ]
+          },
+          {
+            "name": "scene",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "Key Pressed 1 time",
+                "label": {
+                  "en": "Pressed 1x"
+                }
+              },
+              {
+                "id": "Key Pressed 2 times",
+                "label": {
+                  "en": "Pressed 2x"
+                }
+              },
+              {
+                "id": "Key Held Down",
+                "label": {
+                  "en": "Held down"
+                }
+              },
+              {
+                "id": "Key Released",
+                "label": {
+                  "en": "Press released"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
         "id": "ZHC_button",
         "title": {
           "en": "A button has been pressed",
@@ -663,6 +734,2021 @@
     "conditions": []
   },
   "drivers": [
+    {
+      "id": "ZDB5400",
+      "name": {
+        "en": "ZDB5400"
+      },
+      "class": "button",
+      "capabilities": [
+        "onoff",
+        "scene_notification_custom_capability"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "setOnDim": false
+        }
+      },
+      "images": {
+        "large": "/drivers/ZDB5400/assets/images/large.jpeg",
+        "small": "/drivers/ZDB5400/assets/images/small.jpeg"
+      },
+      "zwave": {
+        "manufacturerId": 564,
+        "productTypeId": [
+          3
+        ],
+        "productId": [
+          289
+        ],
+        "zwaveAllianceProductId": 3399,
+        "associationGroups": [
+          1
+        ],
+        "associationGroupsOptions": {
+          "1": {
+            "hint": {
+              "en": "Lifeline. \r\nSends Device Reset notifications, and Central Scene notifications."
+            }
+          },
+          "2": {
+            "hint": {
+              "en": "Basic Report Pushbutton 1"
+            }
+          },
+          "3": {
+            "hint": {
+              "en": "Switch Binary Set Pushbutton 1"
+            }
+          },
+          "4": {
+            "hint": {
+              "en": "Switch Multilevel Set Pushbutton 1"
+            }
+          },
+          "5": {
+            "hint": {
+              "en": "Basic Report Pushbutton 2"
+            }
+          },
+          "6": {
+            "hint": {
+              "en": "Switch Binary Set Pushbutton 2"
+            }
+          },
+          "7": {
+            "hint": {
+              "en": "Switch Multilevel Set Pushbutton 2"
+            }
+          },
+          "8": {
+            "hint": {
+              "en": "Basic Report Pushbutton 3"
+            }
+          },
+          "9": {
+            "hint": {
+              "en": "Switch Binary Set Pushbutton 3"
+            }
+          },
+          "10": {
+            "hint": {
+              "en": "Switch Multilevel Set Pushbutton 3"
+            }
+          },
+          "11": {
+            "hint": {
+              "en": "Basic Report Pushbutton 4"
+            }
+          },
+          "12": {
+            "hint": {
+              "en": "Switch Binary Set Pushbutton 4"
+            }
+          },
+          "13": {
+            "hint": {
+              "en": "Switch Multilevel Set Pushbutton 4"
+            }
+          },
+          "14": {
+            "hint": {
+              "en": "Basic Report Dimmer device"
+            }
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "General"
+          },
+          "children": [
+            {
+              "type": "group",
+              "label": {
+                "en": "Dimmer control"
+              },
+              "children": [
+                {
+                  "id": "operating_pushbuttons_0",
+                  "type": "checkbox",
+                  "value": true,
+                  "label": {
+                    "en": "Pushbutton 1"
+                  },
+                  "hint": {
+                    "en": "Pushbutton 1 controls the dimmer"
+                  }
+                },
+                {
+                  "id": "operating_pushbuttons_1",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Pushbutton 2"
+                  },
+                  "hint": {
+                    "en": "Pushbutton 2 controls the dimmer"
+                  }
+                },
+                {
+                  "id": "operating_pushbuttons_2",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Pushbutton 3"
+                  },
+                  "hint": {
+                    "en": "Pushbutton 3 controls the dimmer"
+                  }
+                },
+                {
+                  "id": "operating_pushbuttons_3",
+                  "type": "checkbox",
+                  "value": false,
+                  "label": {
+                    "en": "Pushbutton 4"
+                  },
+                  "hint": {
+                    "en": "Pushbutton 4 controls the dimmer"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "type": "number",
+              "value": 5,
+              "label": {
+                "en": "Duration of dimming"
+              },
+              "unit": "seconds",
+              "hint": {
+                "en": "This parameter specifies the duration of a full regulation of the light from 0% to 100%. A regulation of the light with 1% will take 1/100 of the specified duration. This is used when a pushbutton is held-down for controlling the dimming, and when the dimming is fulfilled from other Z-Wave devices.\n\nA value of 0 is immediately.\nValues from 1 - 127 is duration in seconds.\nValues from 128 - 255 is duration in minutes (minus 127)."
+              },
+              "zwave": {
+                "index": 2,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              }
+            },
+            {
+              "id": "3",
+              "type": "number",
+              "value": 0,
+              "label": {
+                "en": "Duration of on/off"
+              },
+              "hint": {
+                "en": "This parameter specifies the duration when turning the light on or off.\n\nA value of 0 is immediately.\nValues from 1 - 127 is duration in seconds.\nValues from 128 - 255 is duration in minutes (minus 127)."
+              },
+              "zwave": {
+                "index": 3,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              }
+            },
+            {
+              "id": "4",
+              "value": "1",
+              "label": {
+                "en": "Dimmer mode"
+              },
+              "hint": {
+                "en": "The dimmer can work in three different modes:\n- No dimming, only on/off (0/100%)\n- leading edge dimming\n- trailing edge dimming"
+              },
+              "zwave": {
+                "index": 4,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "on/off"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Trailing edge"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Leading edge"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "5",
+              "value": 0,
+              "label": {
+                "en": "Dimmer minimum level"
+              },
+              "hint": {
+                "en": "This parameter specifies the actual level of the dimmer output when set to 0%."
+              },
+              "zwave": {
+                "index": 5,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 99
+              },
+              "type": "number"
+            },
+            {
+              "id": "6",
+              "value": 99,
+              "label": {
+                "en": "Dimmer maximum level"
+              },
+              "hint": {
+                "en": "This parameter specifies the actual level of the dimmer output when set to 99%."
+              },
+              "zwave": {
+                "index": 6,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 99
+              },
+              "type": "number"
+            },
+            {
+              "id": "7",
+              "value": true,
+              "label": {
+                "en": "Central Scene notifications"
+              },
+              "hint": {
+                "en": "This parameter can be used for disabling Central Scene notifications."
+              },
+              "zwave": {
+                "index": 7,
+                "size": 1
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "8",
+              "value": true,
+              "label": {
+                "en": "Double-activation functionality"
+              },
+              "hint": {
+                "en": "This parameter enables or disables double activation of pushbuttons."
+              },
+              "zwave": {
+                "index": 8,
+                "size": 1
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "9",
+              "value": true,
+              "label": {
+                "en": "Triple-activation functionality"
+              },
+              "hint": {
+                "en": "This parameter can be used for disabling the Z-Wave network add/remove process when triple-activating pushbutton 1."
+              },
+              "zwave": {
+                "index": 9,
+                "size": 1
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "10",
+              "value": false,
+              "label": {
+                "en": "Enhanced LED control"
+              },
+              "hint": {
+                "en": "This parameter can be used for enabling the enhanced LED control. See document about MATRIX enhanced LED control."
+              },
+              "zwave": {
+                "index": 10,
+                "size": 1
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "11",
+              "value": 5,
+              "label": {
+                "en": "Debounce timer"
+              },
+              "hint": {
+                "en": "Pushbutton input debounce time in 0.01 seconds resolution."
+              },
+              "zwave": {
+                "index": 11,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            },
+            {
+              "id": "12",
+              "value": 20,
+              "label": {
+                "en": "Press threshold time"
+              },
+              "hint": {
+                "en": "Specifies the time that a pushbutton must be activated before it is detected as pressed. Resolution is in 0.01 seconds."
+              },
+              "zwave": {
+                "index": 12,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            },
+            {
+              "id": "13",
+              "value": 50,
+              "label": {
+                "en": "Held threshold time"
+              },
+              "hint": {
+                "en": "Specifies the time that a pushbutton must have been activated before it is accepted as “held-down”. Resolution is 0.01 seconds."
+              },
+              "zwave": {
+                "index": 13,
+                "size": 1,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Global brightness control"
+          },
+          "children": [
+            {
+              "id": "global_brightness_control_3",
+              "value": 255,
+              "label": {
+                "en": "Brightness control for red"
+              },
+              "hint": {
+                "en": "Global brightness control for red color with intensity from 0 to 255"
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            },
+            {
+              "id": "global_brightness_control_2",
+              "value": 255,
+              "label": {
+                "en": "Brightness control for green"
+              },
+              "hint": {
+                "en": "Global brightness control for green color with intensity from 0 to 255"
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            },
+            {
+              "id": "global_brightness_control_1",
+              "value": 255,
+              "label": {
+                "en": "Brightness control for blue"
+              },
+              "hint": {
+                "en": "Global brightness control for blue color with intensity from 0 to 255"
+              },
+              "attr": {
+                "min": 0,
+                "max": 255
+              },
+              "type": "number"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Associations groups, transmission when included secure"
+          },
+          "children": [
+            {
+              "id": "association_group_secure_2",
+              "value": true,
+              "label": {
+                "en": "Association group 2"
+              },
+              "hint": {
+                "en": "Association group 2, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_3",
+              "value": true,
+              "label": {
+                "en": "Association group 3"
+              },
+              "hint": {
+                "en": "Association group 3, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_4",
+              "value": true,
+              "label": {
+                "en": "Association group 4"
+              },
+              "hint": {
+                "en": "Association group 4, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_5",
+              "value": true,
+              "label": {
+                "en": "Association group 5"
+              },
+              "hint": {
+                "en": "Association group 5, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_6",
+              "value": true,
+              "label": {
+                "en": "Association group 6"
+              },
+              "hint": {
+                "en": "Association group 6, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_7",
+              "value": true,
+              "label": {
+                "en": "Association group 7"
+              },
+              "hint": {
+                "en": "Association group 7, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_8",
+              "value": true,
+              "label": {
+                "en": "Association group 8"
+              },
+              "hint": {
+                "en": "Association group 8, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_9",
+              "value": true,
+              "label": {
+                "en": "Association group 9"
+              },
+              "hint": {
+                "en": "Association group 9, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_10",
+              "value": true,
+              "label": {
+                "en": "Association group 10"
+              },
+              "hint": {
+                "en": "Association group 10, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_11",
+              "value": true,
+              "label": {
+                "en": "Association group 11"
+              },
+              "hint": {
+                "en": "Association group 11, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_12",
+              "value": true,
+              "label": {
+                "en": "Association group 12"
+              },
+              "hint": {
+                "en": "Association group 12, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_13",
+              "value": true,
+              "label": {
+                "en": "Association group 13"
+              },
+              "hint": {
+                "en": "Association group 13, sent as secure"
+              },
+              "type": "checkbox"
+            },
+            {
+              "id": "association_group_secure_14",
+              "value": true,
+              "label": {
+                "en": "Association group 14"
+              },
+              "hint": {
+                "en": "Association group 14, sent as secure"
+              },
+              "type": "checkbox"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Pushbutton 1"
+          },
+          "children": [
+            {
+              "id": "16",
+              "value": "0",
+              "label": {
+                "en": "Functionality"
+              },
+              "hint": {
+                "en": "This parameter specifies the functionality of pushbutton 1. The values are:\r\n- Standard toggle-function, the state is switched between on and off, dimming up and down\r\n- Automatic turn off after the time has expired (staircase lighting function), the time is specified in the next configuration parameter\r\n- Automatic turn on after the time has expired, the time is specified in the next configuration parameter\r\n- Always turn off or dim down . Using this parameter, the pushbutton can only send ‘off’ or ‘dim down’ commands. Use this in pair with another pushbutton with value 4 (see chapter 2.6 in the manual)\r\n- Always turn on or dim up. Using this parameter, the pushbutton can only send ‘on’ or ‘dim up’ commands. Use this in pair with another pushbutton with value 3 (see chapter 2.6 in the manual)"
+              },
+              "zwave": {
+                "index": 16,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Standard toggle-function"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Automatic turn off"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Automatic turn on"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Always turn off or dim down"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Always turn on or dim up"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "17",
+              "value": 300,
+              "label": {
+                "en": "Timer value"
+              },
+              "hint": {
+                "en": "This parameter specifies the time used in previous configuration parameter. This parameter is only applicable if pushbutton 1 funktionality is set to one of the automatic turn off/on time values."
+              },
+              "zwave": {
+                "index": 17,
+                "size": 2,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 43200
+              },
+              "type": "number"
+            },
+            {
+              "id": "19",
+              "value": "0",
+              "label": {
+                "en": "Binary Switch Set support"
+              },
+              "hint": {
+                "en": "This parameter specifies how received Binary Switch Set commands are handled.\r\nPossible values are:\r\n- Binary Switch Set only controls the pushbutton indicator LEDs, ON/OFF\r\n- Binary Switch Set controls the internal switch status and the pushbutton indicator LEDs\r\n- Binary Switch Set is handled as if the user had activated the pushbutton, including transmission of commands via the association groups"
+              },
+              "zwave": {
+                "index": 19,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "ON/OFF"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Internal switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Like user activation"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "20",
+              "value": "7",
+              "label": {
+                "en": "LED indication"
+              },
+              "hint": {
+                "en": "This parameter specifies how the LED indication is controlled.\r\nPossible values are:\r\n- Internal LED control is disabled, only external commands control the indication\r\n- The LED indication follows the switch status\r\n- The LED indication follows the switch status – with inverted functionality\r\n- Same as: The LED indication follows the switch status\r\n- Same as: The LED indication follows the switch status – with inverted functionality\r\n- The LED indication follows the status of the internal dimmer, ON or OFF\r\n- The LED indication follows the status of the internal dimmer with inverted functionality, ON or OFF\r\n- The LED indicator is ON for 5 seconds when the pushbutton is activated"
+              },
+              "zwave": {
+                "index": 20,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Internal LED control is disabled"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Switch status - Inverted"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Same as: Switch status"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Same as: Switch status -inverted"
+                  }
+                },
+                {
+                  "id": "5",
+                  "label": {
+                    "en": "Internal dimmer status"
+                  }
+                },
+                {
+                  "id": "6",
+                  "label": {
+                    "en": "Internal dimmer status -inverted"
+                  }
+                },
+                {
+                  "id": "7",
+                  "label": {
+                    "en": "ON for 5 seconds"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "21",
+              "value": "1",
+              "label": {
+                "en": "Colour commands"
+              },
+              "hint": {
+                "en": "This parameter specifies how Command Class Switch Color commands are handled.\r\nPossible values are:\r\n- Direct control; the LED indication shows the received colour immediately, until the pushbutton is activated\r\n- Colour command sets the colour for OFF indication\r\n- Colour command sets the colour for ON indication"
+              },
+              "zwave": {
+                "index": 21,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Direct control"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "For OFF indication"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "For ON indication"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "ON indication RGB-saturation for pushbutton 1"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when ON status is indicated. (Default is the ON-state indicated by a 50% blue colour).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_1_3",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_1_2",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_1_1",
+                  "value": 127,
+                  "label": {
+                    "en": "Saturation for the blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 127)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_1_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "OFF indication RGB-saturation for pushbutton 1"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when OFF status is indicated. (Default is the OFF-state indicated as a low white light on 5%).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_1_3",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_1_2",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_1_1",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_1_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Pushbutton 2"
+          },
+          "children": [
+            {
+              "id": "24",
+              "value": "0",
+              "label": {
+                "en": "Functionality"
+              },
+              "hint": {
+                "en": "This parameter specifies the functionality of pushbutton 2. The values are:\r\n- Standard toggle-function, the state is switched between on and off, dimming up and down\r\n- Automatic turn off after the time has expired (staircase lighting function), the time is specified in the next configuration parameter\r\n- Automatic turn on after the time has expired, the time is specified in the next configuration parameter\r\n- Always turn off or dim down . Using this parameter, the pushbutton can only send ‘off’ or ‘dim down’ commands. Use this in pair with another pushbutton with value 4 (see chapter 2.6 in the manual)\r\n- Always turn on or dim up. Using this parameter, the pushbutton can only send ‘on’ or ‘dim up’ commands. Use this in pair with another pushbutton with value 3 (see chapter 2.6 in the manual)"
+              },
+              "zwave": {
+                "index": 24,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Standard toggle-function"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Automatic turn off"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Automatic turn on"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Always turn off or dim down"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Always turn on or dim up"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "25",
+              "value": 300,
+              "label": {
+                "en": "Timer value"
+              },
+              "hint": {
+                "en": "This parameter specifies the time used in previous configuration parameter. This parameter is only applicable if previous parameter has value 1 or 2."
+              },
+              "zwave": {
+                "index": 25,
+                "size": 2,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 43200
+              },
+              "type": "number"
+            },
+            {
+              "id": "27",
+              "value": "0",
+              "label": {
+                "en": "Binary Switch Set support"
+              },
+              "hint": {
+                "en": "This parameter specifies how received Binary Switch Set commands are handled.\r\nPossible values are:\r\n- Binary Switch Set only controls the pushbutton indicator LEDs, ON/OFF\r\n- Binary Switch Set controls the internal switch status and the pushbutton indicator LEDs\r\n- Binary Switch Set is handled as if the user had activated the pushbutton, including transmission of commands via the association groups"
+              },
+              "zwave": {
+                "index": 27,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "ON/OFF"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Internal switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Like user activation"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "28",
+              "value": "7",
+              "label": {
+                "en": "LED indication"
+              },
+              "hint": {
+                "en": "This parameter specifies how the LED indication is controlled.\r\nPossible values are:\r\n- Internal LED control is disabled, only external commands control the indication\r\n- The LED indication follows the switch status\r\n- The LED indication follows the switch status – with inverted functionality\r\n- Same as: The LED indication follows the switch status\r\n- Same as: The LED indication follows the switch status – with inverted functionality\r\n- The LED indication follows the status of the internal dimmer, ON or OFF\r\n- The LED indication follows the status of the internal dimmer with inverted functionality, ON or OFF\r\n- The LED indicator is ON for 5 seconds when the pushbutton is activated"
+              },
+              "zwave": {
+                "index": 28,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Internal LED control is disabled"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Switch status - Inverted"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Same as: Switch status"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Same as: Switch status -inverted"
+                  }
+                },
+                {
+                  "id": "5",
+                  "label": {
+                    "en": "Internal dimmer status"
+                  }
+                },
+                {
+                  "id": "6",
+                  "label": {
+                    "en": "Internal dimmer status -inverted"
+                  }
+                },
+                {
+                  "id": "7",
+                  "label": {
+                    "en": "ON for 5 seconds"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "29",
+              "value": "1",
+              "label": {
+                "en": "Colour commands"
+              },
+              "hint": {
+                "en": "This parameter specifies how Command Class Switch Color commands are handled.\r\nPossible values are:\r\n- Direct control; the LED indication shows the received colour immediately, until the pushbutton is activated\r\n- Colour command sets the colour for OFF indication\r\n- Colour command sets the colour for ON indication"
+              },
+              "zwave": {
+                "index": 29,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Direct control"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "For OFF indication"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "For ON indication"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "ON indication RGB-saturation for pushbutton 2"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when ON status is indicated. (Default is the ON-state indicated by a 50% blue colour).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_2_3",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_2_2",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_2_1",
+                  "value": 127,
+                  "label": {
+                    "en": "Saturation for the blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 127)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_2_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "OFF indication RGB-saturation for pushbutton 2"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when OFF status is indicated. (Default is the OFF-state indicated as a low white light on 5%).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_2_3",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_2_2",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_2_1",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_2_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Pushbutton 3"
+          },
+          "children": [
+            {
+              "id": "32",
+              "value": "0",
+              "label": {
+                "en": "Functionality"
+              },
+              "hint": {
+                "en": "This parameter specifies the functionality of pushbutton 1. The values are:\r\n- Standard toggle-function, the state is switched between on and off, dimming up and down\r\n- Automatic turn off after the time has expired (staircase lighting function), the time is specified in the next configuration parameter\r\n- Automatic turn on after the time has expired, the time is specified in the next configuration parameter\r\n- Always turn off or dim down . Using this parameter, the pushbutton can only send ‘off’ or ‘dim down’ commands. Use this in pair with another pushbutton with value 4 (see chapter 2.6 in the manual)\r\n- Always turn on or dim up. Using this parameter, the pushbutton can only send ‘on’ or ‘dim up’ commands. Use this in pair with another pushbutton with value 3 (see chapter 2.6 in the manual)"
+              },
+              "zwave": {
+                "index": 32,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Standard toggle-function"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Automatic turn off"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Automatic turn on"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Always turn off or dim down"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Always turn on or dim up"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "33",
+              "value": 300,
+              "label": {
+                "en": "Timer value"
+              },
+              "hint": {
+                "en": "This parameter specifies the time used in previous configuration parameter. This parameter is only applicable if previous parameter has value 1 or 2."
+              },
+              "zwave": {
+                "index": 33,
+                "size": 2,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 43200
+              },
+              "type": "number"
+            },
+            {
+              "id": "35",
+              "value": "0",
+              "label": {
+                "en": "Binary Switch Set support"
+              },
+              "hint": {
+                "en": "This parameter specifies how received Binary Switch Set commands are handled.\r\nPossible values are:\r\n- Binary Switch Set only controls the pushbutton indicator LEDs, ON/OFF\r\n- Binary Switch Set controls the internal switch status and the pushbutton indicator LEDs\r\n- Binary Switch Set is handled as if the user had activated the pushbutton, including transmission of commands via the association groups"
+              },
+              "zwave": {
+                "index": 35,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "ON/OFF"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Internal switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Like user activation"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "36",
+              "value": "7",
+              "label": {
+                "en": "LED indication"
+              },
+              "hint": {
+                "en": "This parameter specifies how the LED indication is controlled.\r\nPossible values are:\r\n- Internal LED control is disabled, only external commands control the indication\r\n- The LED indication follows the switch status\r\n- The LED indication follows the switch status – with inverted functionality\r\n- Same as: The LED indication follows the switch status\r\n- Same as: The LED indication follows the switch status – with inverted functionality\r\n- The LED indication follows the status of the internal dimmer, ON or OFF\r\n- The LED indication follows the status of the internal dimmer with inverted functionality, ON or OFF\r\n- The LED indicator is ON for 5 seconds when the pushbutton is activated"
+              },
+              "zwave": {
+                "index": 36,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Internal LED control is disabled"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Switch status - Inverted"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Same as: Switch status"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Same as: Switch status -inverted"
+                  }
+                },
+                {
+                  "id": "5",
+                  "label": {
+                    "en": "Internal dimmer status"
+                  }
+                },
+                {
+                  "id": "6",
+                  "label": {
+                    "en": "Internal dimmer status -inverted"
+                  }
+                },
+                {
+                  "id": "7",
+                  "label": {
+                    "en": "ON for 5 seconds"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "37",
+              "value": "1",
+              "label": {
+                "en": "Colour commands"
+              },
+              "hint": {
+                "en": "This parameter specifies how Command Class Switch Color commands are handled.\r\nPossible values are:\r\n- Direct control; the LED indication shows the received colour immediately, until the pushbutton is activated\r\n- Colour command sets the colour for OFF indication\r\n- Colour command sets the colour for ON indication"
+              },
+              "zwave": {
+                "index": 37,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Direct control"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "For OFF indication"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "For ON indication"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "ON indication RGB-saturation for pushbutton 3"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when ON status is indicated. (Default is the ON-state indicated by a 50% blue colour).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_3_3",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_3_2",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_3_1",
+                  "value": 127,
+                  "label": {
+                    "en": "Saturation for the blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 127)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_3_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "OFF indication RGB-saturation for pushbutton 3"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when OFF status is indicated. (Default is the OFF-state indicated as a low white light on 5%).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_3_3",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_3_2",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_3_1",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_3_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Pushbutton 4"
+          },
+          "children": [
+            {
+              "id": "40",
+              "value": "0",
+              "label": {
+                "en": "Functionality"
+              },
+              "hint": {
+                "en": "This parameter specifies the functionality of pushbutton 1. The values are:\r\n- Standard toggle-function, the state is switched between on and off, dimming up and down\r\n- Automatic turn off after the time has expired (staircase lighting function), the time is specified in the next configuration parameter\r\n- Automatic turn on after the time has expired, the time is specified in the next configuration parameter\r\n- Always turn off or dim down . Using this parameter, the pushbutton can only send ‘off’ or ‘dim down’ commands. Use this in pair with another pushbutton with value 4 (see chapter 2.6 in the manual)\r\n- Always turn on or dim up. Using this parameter, the pushbutton can only send ‘on’ or ‘dim up’ commands. Use this in pair with another pushbutton with value 3 (see chapter 2.6 in the manual)"
+              },
+              "zwave": {
+                "index": 40,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Standard toggle-function"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Automatic turn off"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Automatic turn on"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Always turn off or dim down"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Always turn on or dim up"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "41",
+              "value": 300,
+              "label": {
+                "en": "Timer value"
+              },
+              "hint": {
+                "en": "This parameter specifies the time used in previous configuration parameter. This parameter is only applicable if pushbutton 1 funktionality is set to one of the automatic turn off/on time values."
+              },
+              "zwave": {
+                "index": 41,
+                "size": 2,
+                "signed": false
+              },
+              "attr": {
+                "min": 0,
+                "max": 43200
+              },
+              "type": "number"
+            },
+            {
+              "id": "43",
+              "value": "2",
+              "label": {
+                "en": "Binary Switch Set support"
+              },
+              "hint": {
+                "en": "This parameter specifies how received Binary Switch Set commands are handled.\r\nPossible values are:\r\n- Binary Switch Set only controls the pushbutton indicator LEDs, ON/OFF\r\n- Binary Switch Set controls the internal switch status and the pushbutton indicator LEDs\r\n- Binary Switch Set is handled as if the user had activated the pushbutton, including transmission of commands via the association groups"
+              },
+              "zwave": {
+                "index": 43,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "ON/OFF"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Internal switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Like user activation"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "44",
+              "value": "7",
+              "label": {
+                "en": "LED indication"
+              },
+              "hint": {
+                "en": "This parameter specifies how the LED indication is controlled.\r\nPossible values are:\r\n- Internal LED control is disabled, only external commands control the indication\r\n- The LED indication follows the switch status\r\n- The LED indication follows the switch status – with inverted functionality\r\n- Same as: The LED indication follows the switch status\r\n- Same as: The LED indication follows the switch status – with inverted functionality\r\n- The LED indication follows the status of the internal dimmer, ON or OFF\r\n- The LED indication follows the status of the internal dimmer with inverted functionality, ON or OFF\r\n- The LED indicator is ON for 5 seconds when the pushbutton is activated"
+              },
+              "zwave": {
+                "index": 44,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Internal LED control is disabled"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Switch status"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Switch status - Inverted"
+                  }
+                },
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Same as: Switch status"
+                  }
+                },
+                {
+                  "id": "4",
+                  "label": {
+                    "en": "Same as: Switch status -inverted"
+                  }
+                },
+                {
+                  "id": "5",
+                  "label": {
+                    "en": "Internal dimmer status"
+                  }
+                },
+                {
+                  "id": "6",
+                  "label": {
+                    "en": "Internal dimmer status -inverted"
+                  }
+                },
+                {
+                  "id": "7",
+                  "label": {
+                    "en": "ON for 5 seconds"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "id": "45",
+              "value": "1",
+              "label": {
+                "en": "Colour commands"
+              },
+              "hint": {
+                "en": "This parameter specifies how Command Class Switch Color commands are handled.\r\nPossible values are:\r\n- Direct control; the LED indication shows the received colour immediately, until the pushbutton is activated\r\n- Colour command sets the colour for OFF indication\r\n- Colour command sets the colour for ON indication"
+              },
+              "zwave": {
+                "index": 45,
+                "size": 1
+              },
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Direct control"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "For OFF indication"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "For ON indication"
+                  }
+                }
+              ],
+              "type": "dropdown"
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "ON indication RGB-saturation for pushbutton 4"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when ON status is indicated. (Default is the ON-state indicated by a 50% blue colour).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_4_3",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_4_2",
+                  "value": 0,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 0)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_4_1",
+                  "value": 127,
+                  "label": {
+                    "en": "Saturation for the blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 127)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "on_indication_rgb_saturation_pushbutton_4_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "label": {
+                "en": "OFF indication RGB-saturation for pushbutton 4"
+              },
+              "hint": {
+                "en": "This parameter specifies the saturation levels for the red, green and blue LEDs, when OFF status is indicated. (Default is the OFF-state indicated as a low white light on 5%).\r\nByte 1: Colour saturation, red.\r\nByte 2: Colour saturation, green.\r\nByte 3: Colour saturation, blue.\r\nByte 4: LED control."
+              },
+              "children": [
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_4_3",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for red LEDs"
+                  },
+                  "hint": {
+                    "en": "Control red color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_4_2",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for green LEDs"
+                  },
+                  "hint": {
+                    "en": "Control green color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_4_1",
+                  "value": 47,
+                  "label": {
+                    "en": "Saturation for blue LEDs"
+                  },
+                  "hint": {
+                    "en": "Control blue color with intensity from 0 to 255. (Default is 47)"
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                },
+                {
+                  "id": "off_indication_rgb_saturation_pushbutton_4_0",
+                  "value": 0,
+                  "label": {
+                    "en": "LED indicator control"
+                  },
+                  "hint": {
+                    "en": "LED indicator control; see the application note about this parameter. (Default is 0)\r\nValue range from 0 to 255."
+                  },
+                  "attr": {
+                    "min": 0,
+                    "max": 255
+                  },
+                  "type": "number"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "ZHC5002",
       "name": {
