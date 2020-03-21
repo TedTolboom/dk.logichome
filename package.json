@@ -4,12 +4,17 @@
 	"description": "This app adds support for Logic Home Control devices in Homey.",
 	"main": "app.js",
 	"dependencies": {
-		"git-branch": "^2.0.1",
 		"homey-meshdriver": "^1.2.9"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"athom-cli": "^3.0.2",
+		"git-branch": "^2.0.1",
+		"node-homey-config-composer": "^1.2.0"
+	},
 	"scripts": {
-		"run": "homeyConfig compose; athom project --run",
+		"run": "athom app run",
+		"validate": "athom app validate",
+		"build": "homeyConfig compose",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
